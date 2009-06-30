@@ -21,6 +21,11 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 4/27/09 (2.6.002)
+/config/ColdSpring.xml - just the version
+/controller/IssueController.cfc - handle bug with issue editing from iPhone
+/views/projects.cfm - remove the ability for the admin go into the issues - causes a problem if they try to add an issue
+
 Last Updated: 4/27/09 (2.6.001)
 issueController.cfc - bad link for email - fix thanks to Mischa Sameli
 issueController.cfc - bad code when updating history 
