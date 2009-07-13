@@ -131,6 +131,7 @@
 		<cfargument name="bean" type="any" required="true">
 		<cfset var newID = "">
 		<cfset var id = "">
+		<cfset var i = "">
 		
 		<cfif len(bean.getId()) and bean.getId() neq 0>
 
@@ -149,7 +150,7 @@
 
 			<cfset newID = createUUID()>
 
-			<cfquery name="insRec" datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
+			<cfquery datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
 				insert into lh_projects(id,name,mailserver,mailusername,mailpassword,mailemailaddress)
 				values(
 					<cfqueryparam cfsqltype="cf_sql_varchar" value="#newid#" maxlength="35">,

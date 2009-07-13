@@ -97,7 +97,7 @@
 
 			<cfset newID = createUUID()>
 
-			<cfquery name="insRec" datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
+			<cfquery datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
 				insert into lh_milestones(id,name,duedate,projectidfk)
 				values(
 					<cfqueryparam cfsqltype="cf_sql_varchar" value="#newid#" maxlength="35">,
