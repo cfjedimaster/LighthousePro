@@ -21,6 +21,13 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 7/13/09 (2.6.004)
+NOTE! Renamed ColdSpring.xml to ColdSpring.xml.cfm.
+/config/Application.cfm - added to bounce folks
+/index.cfm - support new location of ColdSpring
+renamed model/mailService.cfc to MailService.cfc. Case sensitive file systems are a PITA.
+docs updated to be more clear about dependancies.
+
 Last Updated: 7/13/09 (2.6.003)
 /config/ColdSpring.xml - version
 /controller/IssueController.cfc, /helpers/json.cfc, /model/IssueTypeGateway.cfc + MilestoneGateway.cfc + ProjectAreaGateway.cfc + ProjectGateway.cfc + UserGateway.cfc -> Missing var scopes!
