@@ -21,7 +21,14 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
-Last Updated: 7/13/09 (2.6.004)
+Last Updated: 10/1/09 (2.6.004)
+/config/ColdSpring.xml.cfm - version
+/controller/IssueController.cfc - forgot to write method to handle deleting issue types
+/controller/IssueController.cfc - if you delete an attachment and the file doesn't exist, no error.
+/controller/IssueControlle.cfc, /model/IssueService.cfc, /model/IssueGateway.cfc, /view/pages/issue.cfm -> Support for deleting issues
+
+
+Last Updated: 8/20something/09 (2.6.004)
 NOTE! Renamed ColdSpring.xml to ColdSpring.xml.cfm.
 /config/Application.cfm - added to bounce folks
 /index.cfm - support new location of ColdSpring
