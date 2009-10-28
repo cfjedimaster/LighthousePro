@@ -21,7 +21,7 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
-Last Updated: 10/1/09 (2.6.1.004)
+Last Updated: 10/28/09 (2.6.1.004)
 Note - the updates for 10/1/09 were for 2.6.1, I wrote the wrong version #.
 /config/ColdSpring.xml.cfm - version
 /customtags/renderErrors.cfm - fixed a CF8 array loop to be CF7 compat.
