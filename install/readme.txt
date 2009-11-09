@@ -21,6 +21,13 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 10/28/09 (2.6.1.002)
+Ignore the 004 below. Brain fart. 
+/Application.cfc - added onRequestStart to disable debugging.
+/config/ColdSpring.xml.cfm - version
+/controller/UserController.cfc - Fixes a bug where updated your preferences could make you lose a project.
+/views/ages/rss.cfm - Fixes a bad link and updates to RSS 2.
+
 Last Updated: 10/28/09 (2.6.1.004)
 Note - the updates for 10/1/09 were for 2.6.1, I wrote the wrong version #.
 /config/ColdSpring.xml.cfm - version
