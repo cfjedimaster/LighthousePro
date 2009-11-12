@@ -21,6 +21,10 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 11/11/09 (2.6.1.003)
+/controller/Controller.cfc - fixed a compatibility issue with Open BlueDragon.
+/install - Docs updated with instructions for installing on Open BlueDragon.
+
 Last Updated: 10/28/09 (2.6.1.002)
 Ignore the 004 below. Brain fart. 
 /Application.cfc - added onRequestStart to disable debugging.
