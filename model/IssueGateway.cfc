@@ -99,15 +99,17 @@
 						u.name AS username,
 						it.name as issuetype,
 						m.name as milestone,
-						i.issuetypeidfk
-						FROM ((((((lh_issues AS i 
+						i.issuetypeidfk,
+						u2.name as creatorname
+						FROM (((((((lh_issues AS i 
 						LEFT JOIN lh_projectloci AS pl on i.locusidfk = pl.id)
 						LEFT JOIN lh_severities AS sev on i.severityidfk = sev.id)
 						LEFT JOIN lh_statuses AS st on i.statusidfk = st.id)
 						LEFT JOIN lh_projects AS p on i.projectidfk = p.id)
 						LEFT JOIN lh_users AS u on i.useridfk = u.id)    
 						LEFT JOIN lh_issuetypes AS it on i.issuetypeidfk = it.id)
-						LEFT JOIN lh_milestones AS m on i.milestoneidfk = m.id
+						LEFT JOIN lh_milestones AS m on i.milestoneidfk = m.id)
+						LEFT JOIN lh_users AS u2 on i.creatoridfk = u2.id
 						WHERE		1=1
 						<cfif arguments.projectidfk neq "">
 						AND	i.projectidfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.projectidfk#" maxlength="35">
