@@ -1,28 +1,29 @@
 <cfset root = event.getValue("myself")>
 <cfset project = event.getValue("project")>
+<cfset currentfilters = event.getValue("currentfilters")>
 
 <cfset possibleIssueTypes = event.getValue("issuetypes")>
-<cfset issuetype_filter = event.getValue("issuetype_filter")>
+<cfset issuetype_filter = event.getValue("issuetype_filter",currentfilters.issuetype_filter)>
 
 <cfset allProjectAreas = event.getValue("projectareas")> 
 <cfset possibleProjectAreas = project.getProjectAreas()>
-<cfset loci_filter = event.getValue("loci_filter")>
+<cfset loci_filter = event.getValue("loci_filter",currentfilters.loci_filter)>
 
 <cfset possibleSeverities = event.getValue("severities")>
-<cfset severity_filter = event.getValue("severity_filter")>
+<cfset severity_filter = event.getValue("severity_filter",currentfilters.severity_filter)>
 
 <cfset possibleStatuses = event.getValue("statuses")>
-<cfset status_filter = event.getValue("status_filter")>
+<cfset status_filter = event.getValue("status_filter",currentfilters.status_filter)>
 
 <cfset possibleUsers = project.getFullUsers()>
-<cfset owner_filter = event.getValue("owner_filter")>
+<cfset owner_filter = event.getValue("owner_filter",currentfilters.owner_filter)>
 
-<cfset perpage = event.getValue("perpage", 10)>
+<cfset perpage = event.getValue("perpage", currentfilters.perpage_filter)>
 
 <cfset milestones = event.getValue("milestones")>
-<cfset milestone_filter = event.getValue("milestone_filter")>
+<cfset milestone_filter = event.getValue("milestone_filter",currentfilters.milestone_filter)>
 
-<cfset keyword_filter = event.getValue("keyword_filter")>
+<cfset keyword_filter = event.getValue("keyword_filter",currentfilters.keyword_filter)>
 
 <cfset event.setValue("title", "Issues for Project: #project.getName()#")>
 
@@ -163,7 +164,7 @@ function updatePage(n) {
 }
 
 $(document).ready(
-	loadData
+	filterData
 );
 </script>
 	
