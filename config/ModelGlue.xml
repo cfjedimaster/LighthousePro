@@ -53,7 +53,8 @@
 		<message-listener message="checkLogin" />
 		<message-listener message="deleteUser" />
 		<message-listener message="getUser" />		
-		<message-listener message="getUsers" />		
+		<message-listener message="getUsers" />	
+		<message-listener message="persistFilters" />				
 		<message-listener message="processLogin" />
 		<message-listener message="processLogout" />
 		<message-listener message="savePrefs" />
@@ -647,6 +648,7 @@
 		<broadcasts format="json">
 			<message name="getProject" />
 			<message name="getIssues" />
+			<message name="persistFilters" />
 		</broadcasts>
 		<results format="html">
 			<result do="template.main" />
