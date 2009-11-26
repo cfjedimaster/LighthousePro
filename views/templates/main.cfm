@@ -66,7 +66,7 @@
 										function goToProject(el){
 											var id = el.options[el.selectedIndex].value
 											if (id != 0){
-												window.location.href='#root#page.viewissues&id='+id;
+												window.location.href='#root#page.viewissues&id='+id+'&clearfilter=1';
 											}
 										}
 									</script>
@@ -78,7 +78,7 @@
 									</select>
 								<cfelse>
 									<cfloop query="projects">
-										<li><a href="#root#page.viewissues&id=#id#" class="blueLink">#name#</a> <a href="#root#page.viewissue&id=0&pid=#id#" title="Add new issue to #htmlEditFormat(name)#">[+]</a></li>
+										<li><a href="#root#page.viewissues&id=#id#&clearfilter=1" class="blueLink">#name#</a> <a href="#root#page.viewissue&id=0&pid=#id#" title="Add new issue to #htmlEditFormat(name)#">[+]</a></li>
 									</cfloop>
 								</cfif>
 							<cfelse>
