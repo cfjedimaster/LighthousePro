@@ -21,6 +21,19 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 11/11/09 (2.6.2) 
+Support for remembering filters was added. Code was written by Bjorn Jensen, but I modified
+it heavily to make it fit more into the Model-Glue framework.
+
+/config/ColdSpring.xml.cfm - just a version # change
+/config/ModelGlue.xml.cfm - support for remembering filters
+/controller/UserController.cfc - support for above
+/customtags/datatable.cfm - fixes a stupid IE bug.
+/model/IssueGteway.cfc - getIssues returns the creator's name.
+/views/pages/report.cfm - shows creator name.
+/views/pages/viewissues.cfm - support for remembering filter
+/views/templates/main.cfm - ditto above 
+
 Last Updated: 11/11/09 (2.6.1.003) (Updates by Ezra Parker)
 /controller/Controller.cfc - fixed a compatibility issue with Open BlueDragon.
 /install - Docs updated with instructions for installing on Open BlueDragon.
