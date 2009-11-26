@@ -54,6 +54,12 @@
 
 	</cffunction>
 
+	<cffunction name="clearFilters" access="private" output="false">
+		<cfif structKeyExists(session, "user") and structKeyExists(session, "filters")>
+			<cfset structDelete(session, "filters")>
+		</cfif>
+	</cffunction>
+	
 	<cffunction name="clearUser" access="private" output="false">
 		<cfset structDelete(session, "user")>
 	</cffunction>
@@ -66,6 +72,24 @@
 		<cfargument name="event" type="any">
 		<cfset var markedtodie = arguments.event.getValue("mark")>
 		<cfset beans.userService.deleteUsers(markedtodie)>
+	</cffunction>
+	
+	<cffunction name="getCurrentFilters" access="private" output="false" returnType="struct">
+		<cfif not structKeyExists(session, "user")>
+			<cfthrow message="Unauthenticated call to getCurrentFilters">
+		</cfif>
+		<cfif not structKeyExists(session, "filters")>
+			<cfset session.filters = structNew()>
+			<cfset session.filters.issuetype_filter="">
+			<cfset session.filters.loci_filter="">
+			<cfset session.filters.severity_filter="">
+			<cfset session.filters.status_filter="">
+			<cfset session.filters.owner_filter="">
+			<cfset session.filters.perpage_filter="10">
+			<cfset session.filters.milestone_filter="">
+			<cfset session.filters.keyword_filter="">
+		</cfif>
+		<cfreturn session.filters>
 	</cffunction>
 	
 	<cffunction name="getUser" access="public" output="false">
@@ -89,10 +113,30 @@
 		<!--- copy settings to the Event scope so we can use it all the time. --->
 		<cfif loggedIn()>
 			<cfset arguments.event.setValue("currentuser", getCurrentUser())>
+			<!--- Add support for defaulting filters for our issues. --->
+			<cfif arguments.event.valueExists("clearfilter")>
+				<cfset clearFilters()>
+			</cfif>
+			<cfset arguments.event.setValue("currentfilters", getCurrentFilters())>
 		</cfif>
 		
 	</cffunction>
 
+	<cffunction name="persistFilters" access="public" output="false">
+		<cfargument name="event" type="any">
+		<cfset var f = structNew()>
+		
+		<cfset f.issuetype_filter = arguments.event.getValue("issuetype")>
+		<cfset f.loci_filter = arguments.event.getValue("locus")>
+		<cfset f.severity_filter = arguments.event.getValue("severity")>
+		<cfset f.status_filter = arguments.event.getValue("status")>
+		<cfset f.owner_filter = arguments.event.getValue("owner")>
+		<cfset f.keyword_filter = arguments.event.getValue("keyword")>
+		<cfset f.milestone_filter = arguments.event.getValue("milestone")>	
+		<cfset f.perpage_filter = arguments.event.getValue("perpage")>
+		<cfset session.filters = f>
+	</cffunction>
+	
 	<cffunction name="processLogin" access="public" output="false">
 		<cfargument name="event" type="any" required="true">
 		<cfset var username = arguments.event.getValue("username")>
