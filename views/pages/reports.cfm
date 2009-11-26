@@ -175,7 +175,7 @@ Select one or more projects below to generate reports.
 			<td>#publicID#</td>
 			<td>#name#</td>
 			<td>#username#</td>
-			<td>#username#</td>
+			<td>#creatorname#</td>
 			<td>#issuetype#</td>
 			<td>#locusname#</td>
 			<td>#severityname#</td>
