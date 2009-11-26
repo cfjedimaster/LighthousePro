@@ -104,16 +104,10 @@
 function checksubmit() {
 	var confirmState=window.confirm("DELETE - are you sure?");
 	if (confirmState) {
-		if(document.listing.mark.length == null) {
-			if(document.listing.mark.checked) {
-				document.listing.submit();
-				return;
-			}
-		}
-	
-		for(i=0; i < document.listing.mark.length; i++) {
-			if(document.listing.mark[i].checked) document.listing.submit();
-		}
+		var data = $("##listing input:checked").val()
+		if(!data) return
+		$("##mark").val(data)
+		$("##listingform").submit()
 	}
 }
 </script>
@@ -137,7 +131,13 @@ function checksubmit() {
 </cfif>
 
 <p>
-<form name="listing" action="#attributes.deletelink#" method="post">
+<form id="listingform" action="#attributes.deletelink#" method="post">
+<!---
+STUPID FREAKING IE... for some reason, when the form is loaded via Ajax (milestones),
+it doesn't send checkboxes, even though it does send everything else.
+--->
+<input type="hidden" name="mark" id="mark" value="">
+
 <table id="listing" cellspacing="0">
 
 	<tr class="hdRow">
@@ -166,7 +166,7 @@ function checksubmit() {
 <cfif attributes.data.recordCount>
 	<cfoutput query="attributes.data" startrow="#(url.page-1)*perpage + 1#" maxrows="#perpage#">
 		<tr <cfif currentRow mod 2 is 0>class="dark"</cfif>>
-			<td width="20"><input type="checkbox" name="mark" value="#attributes.data[attributes.linkval][currentRow]#"></td>
+			<td width="20"><input type="checkbox" name="markbox" value="#attributes.data[attributes.linkval][currentRow]#"></td>
 			<cfloop index="c" list="#attributes.list#">
 				<cfif not structKeyExists(colData, c)>
 					<cfset value = attributes.data[c][currentRow]>
