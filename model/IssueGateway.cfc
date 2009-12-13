@@ -239,6 +239,7 @@
 			</cflock>
 			
 			<cfset arguments.bean.setID(newid)>
+			<cfset arguments.bean.setPublicID(newpublicid)>
 					
 			<cfreturn arguments.bean>
 		
