@@ -21,6 +21,12 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 12/13/09 (2.6.3) 
+/config/ColdSpring.xml.cfm - Just a version #.
+/config/ModelGlue.xml - save issue action updated to append PID on result.
+/controller/IssueController.cfc - When sending an email, prepend subject with "Issue: " and added a colon to Project in FROM name.
+/model/IssueGateway.cfc - Fixed a bug where public ID wasn't returned after a save.
+
 Last Updated: 11/11/09 (2.6.2) 
 Support for remembering filters was added. Code was written by Bjorn Jensen, but I modified
 it heavily to make it fit more into the Model-Glue framework.
