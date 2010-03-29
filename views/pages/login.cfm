@@ -1,6 +1,7 @@
 <cfset settings = event.getValue("settings")>
 <cfset root = event.getValue("myself")>
 <cfset loginError = event.getValue("loginError", 0)>
+<cfset desiredurl = event.getValue("desiredurl")>
 	
 <cfoutput>
 <div id="loginBox">
@@ -8,6 +9,7 @@
 	<div id="loginForm">
 		<h1 class="bgreplace">Lighthouse Pro Login</h1>
 			<form action="#root#action.login" method="post" name="loginform">
+			<input type="hidden" name="desiredurl" value="#desiredurl#">
 			<div class="field clear">
 				<label>Username:</label>
 				<input type="text" name="username" id="username" class="bigInput" />
