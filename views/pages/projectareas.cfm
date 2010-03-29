@@ -6,7 +6,8 @@
 
 <h2 class="red">Project Areas</h2>
 <p>
-Use the form below to select a project area to modify. Project areas help you organize your issues based on what part of your project the issue was found. 
+Use the form below to select a project area to modify. Project areas help you organize your issues based on what part of your project the issue was found. Project areas are system wide, so a change here will
+impact all projects. Projects can choose which project areas are valid for their issues.
 </p>
 	
 <cf_datatable data="#projectareas#" queryString="event=#event.getValue(event.getValue("eventValue"))#" editlink="#root#page.projectarea" deletelink="#root#action.projectareadelete" label="Project Area" linkcol="name">
