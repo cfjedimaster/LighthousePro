@@ -1,7 +1,7 @@
 ReadMe
 
 LICENSE 
-Copyright 2008 Raymond Camden
+Copyright 2010 Raymond Camden
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -20,6 +20,13 @@ Copyright 2008 Raymond Camden
 This application was created by Raymond Camden (ray@camdenfamily.com). 
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
+
+Last Updated: 3/29/10 (2.6.4) 
+/config/ColdSpring.xml.cfm - Just a version #.
+/controller/IssueController.cfc - when we email stuff, include project id in link
+/controller/UserController.cfc - support going to the desired url when logging in
+/views/login.cfm - remember url for after login
+/views/projectareas.cfm - Added a bit of text to make it clear this was a system wide setting.
 
 Last Updated: 12/13/09 (2.6.3) 
 /config/ColdSpring.xml.cfm - Just a version #.
