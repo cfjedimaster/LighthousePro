@@ -299,7 +299,7 @@
 		    <cfset link = link & ':' & cgi.server_port>
 		</cfif>
 
-		<cfset link = link & "#root#/index.cfm?event=page.viewissue&id=#issueBean.getID()#">  
+		<cfset link = link & "#root#/index.cfm?event=page.viewissue&id=#issueBean.getID()#&pid=#projectid#">  
 <cfsavecontent variable="textmailbody">
 <cfoutput>
 Lighthouse Pro Notification

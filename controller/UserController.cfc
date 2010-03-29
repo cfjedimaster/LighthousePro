@@ -49,6 +49,8 @@
 		</cfif>
 		
 		<cfif not loggedIn()>
+			<!--- store what we had wanted --->
+			<cfset arguments.event.setValue("desiredurl", cgi.query_string)>
 			<cfset arguments.event.addResult("needLogin")>
 		</cfif>
 
@@ -141,9 +143,14 @@
 		<cfargument name="event" type="any" required="true">
 		<cfset var username = arguments.event.getValue("username")>
 		<cfset var password = arguments.event.getValue("password")>
+		<cfset var desiredurl = arguments.event.getValue("desiredurl")>
 		
 		<cfif beans.userService.authenticate(username,password)>
 			<cfset storeUser(beans.userService.getUserByUsername(username))>
+			<!--- See if we have a desiredurl value - if so, we go there instead of going home --->
+			<cfif len(desiredurl)>
+				<cflocation url="index.cfm?#desiredurl#" addToken="false">
+			</cfif>			
 			<cfset arguments.event.addResult("loggedIn")>
 		<cfelse>
 			<cfset arguments.event.setValue("loginError",1)>
