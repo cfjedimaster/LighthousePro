@@ -21,6 +21,11 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 4/21/10 (2.6.5) 
+/config/ColdSpring.xml.cfm - version #
+/controller/UserController.cfc - Two fixes in save user. First, it was losing the selected email projects for the user. Secondly, if you edited yourself,
+it didn't update the session copy.
+
 Last Updated: 3/29/10 (2.6.4) 
 /config/ColdSpring.xml.cfm - Just a version #.
 /controller/IssueController.cfc - when we email stuff, include project id in link
