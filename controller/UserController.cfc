@@ -225,8 +225,9 @@
 		<cfset var name = htmlEditFormat(trim(arguments.event.getValue("name")))>
 		<cfset var emailaddress = htmlEditFormat(trim(arguments.event.getValue("emailaddress")))>
 		<cfset var selprojects = arguments.event.getValue("selprojects","")>
-		<cfset var selemailprojects = arguments.event.getValue("selemailprojects","")>
+		<cfset var selemailprojects = arguments.event.getValue("emailprojects","")>
 		<cfset var admin = arguments.event.getValue("admin")>
+		<cfset var me = getCurrentUser()>
 		
 		<cfset u.setUserName(left(username,50))>
 		<cfif resetpassword>
@@ -254,6 +255,10 @@
 		<cfif not arrayLen(errors)>
 			<cftry>
 				<cfset beans.userService.saveUser(u)>
+				<!--- It's possible I edited myself - so if so, update copy --->
+				<cfif u.getId() is me.getId()>
+					<cfset storeUser(u)>
+				</cfif>
 				<cfset arguments.event.addResult("good")>
 				<cfcatch>
 					<cfset errors[1] = cfcatch.message>			
