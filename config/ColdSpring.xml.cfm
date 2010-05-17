@@ -53,10 +53,9 @@
 			<entry key="mailusername"><value></value></entry>
 			<entry key="mailpassword"><value></value></entry>
 			<entry key="mailserver"><value></value></entry>
-			<entry key="mailpassword"><value></value></entry>
 			<entry key="plaintextpassword"><value>true</value></entry>
 			<entry key="rssfeedsenabled"><value>true</value></entry>
-			<entry key="version"><value>2.6.5</value></entry>
+			<entry key="version"><value>2.6.6</value></entry>
 		</map>
 	</property>
 </bean>

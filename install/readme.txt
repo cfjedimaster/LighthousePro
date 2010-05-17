@@ -21,6 +21,10 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 5/17/10 (2.6.6) 
+/config/ColdSpring.xml.cfm - empty mailpassword field,  version #
+/model/MailService.cfc - better handling of mail values - thanks to Lawrence Cramer for helping me get this
+
 Last Updated: 4/21/10 (2.6.5) 
 /config/ColdSpring.xml.cfm - version #
 /controller/UserController.cfc - Two fixes in save user. First, it was losing the selected email projects for the user. Secondly, if you edited yourself,

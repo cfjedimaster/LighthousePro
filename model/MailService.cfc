@@ -8,12 +8,14 @@
 	
 		<!--- make one string for mail server. Thanks to Andrew Penhorwood --->
 		<cfif variables.config.mailserver neq "">
+			
 			<cfif variables.config.mailport neq "">
-				<cfset variables.mailserver = variables.config.mailserver & ":" & variables.config.mailport>
+				<cfset variables.config.mailserver = variables.config.mailserver & ":" & variables.config.mailport>
 			</cfif>			
 			<cfif variables.config.mailusername neq "">
-	   			<cfset variables.mailserver = variables.config.mailusername & ":" & variables.config.mailpassword & "@" & variables.config.mailserver>
+	   			<cfset variables.config.mailserver = variables.config.mailusername & ":" & variables.config.mailpassword & "@" & variables.config.mailserver>
 			</cfif>
+			<cfset variables.mailserver = variables.config.mailserver>
 		<cfelse>
 			<cfset variables.mailserver = "">
 		</cfif>		
