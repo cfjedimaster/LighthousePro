@@ -21,6 +21,14 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 5/17/10 (2.6.7) 
+All of the below by Pedro Lopez
+
+/install/oracle.sql - fix by Pedro Lopez
+/config/ColdSpring.xml - new setting: dateformat - allows you to specify dateformat display system wide
+/model/IssueGateway.cfc - Oracle fix
+/views/index.cfm, issue.cfm, milestone.cfm, printissue.cfm, reports.cfm, viewissuesjson.cfm - dateformat support
+
 Last Updated: 5/17/10 (2.6.6) 
 /config/ColdSpring.xml.cfm - empty mailpassword field,  version #
 /model/MailService.cfc - better handling of mail values - thanks to Lawrence Cramer for helping me get this
