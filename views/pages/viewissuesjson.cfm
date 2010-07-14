@@ -2,6 +2,7 @@
 <cfset start = event.getValue("start",1)>
 <cfset perpage = event.getValue("perpage",10)>
 <cfset issues = event.getValue("issues")>
+<cfset settings = event.getValue("settings")>
 
 <!--- build a struct to hold metadata --->
 <cfset s = structNew()>
@@ -28,12 +29,12 @@
 		<cfset i.statusrank = issues.statusrank[x]>
 		<cfset i.username = issues.username[x]>
 		<cfif len(issues.updated[x])>
-			<cfset i.prettydate = dateFormat(issues.updated[x], "m/d/yy")>
+			<cfset i.prettydate = dateFormat(issues.updated[x], settings.dateformat)>
 		<cfelse>
 			<cfset i.prettydate = "">
 		</cfif>
 		<cfif len(issues.duedate[x])>
-			<cfset i.prettyduedate = dateFormat(issues.duedate[x], "m/d/yy")>
+			<cfset i.prettyduedate = dateFormat(issues.duedate[x], settings.dateformat)>
 		<cfelse>
 			<cfset i.prettyduedate = "">
 		</cfif>

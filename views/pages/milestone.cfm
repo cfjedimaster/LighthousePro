@@ -2,11 +2,12 @@
 <cfset event.setValue("title", "Milestone Edit")>
 <cfset root = event.getValue("myself")>
 <cfset milestone = event.getValue("milestone")>
+<cfset settings = event.getValue("settings")>
 
 <cfset name = event.getValue("name", milestone.getName())>
 <cfset duedate = event.getValue("duedate", milestone.getDueDate())>
 <cfif len(duedate)>
-	<cfset duedate = dateFormat(dueDate, "mm/dd/yy")>
+	<cfset duedate = dateFormat(dueDate, settings.dateformat)>
 </cfif>		
 <cfset project = event.getValue("project", milestone.getProjectIDFK())>
 

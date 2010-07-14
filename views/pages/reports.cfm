@@ -3,7 +3,7 @@
 <cfset myProjects = event.getValue("myprojects")>
 <cfset projects = event.getValue("projects", 0)>
 <cfset root = event.getValue("myself")>
-
+<cfset settings = event.getValue("settings")>
 <cfset data = event.getValue("data")>
 <cfset projectCollection = event.getValue("projectCollection")>
 <cfset statuses = event.getValue("statuses")>
@@ -180,9 +180,9 @@ Select one or more projects below to generate reports.
 			<td>#locusname#</td>
 			<td>#severityname#</td>
 			<td>#statusname#</td>
-			<td>#dateFormat(created,"mm/dd/yy")# #timeFormat(created,"hh:mm tt")#</td>
-			<td>#dateFormat(updated,"mm/dd/yy")# #timeFormat(updated,"hh:mm tt")#</td>
-			<td>#dateFormat(duedate,"mm/dd/yy")# #timeFormat(duedate,"hh:mm tt")#</td>
+			<td>#dateFormat(created,settings.dateformat)# #timeFormat(created,"hh:mm tt")#</td>
+			<td>#dateFormat(updated,settings.dateformat)# #timeFormat(updated,"hh:mm tt")#</td>
+			<td>#dateFormat(duedate,settings.dateformat)# #timeFormat(duedate,"hh:mm tt")#</td>
 		</tr>
 	</cfoutput>
 

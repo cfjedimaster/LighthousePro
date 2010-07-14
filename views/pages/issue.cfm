@@ -18,6 +18,7 @@
 <cfset history = event.getValue("history", issue.getHistory())>
 <cfset notes = event.getValue("notes")>
 <cfset duedate = event.getValue("duedate", issue.getDueDate())>
+<cfset settings = event.getValue("settings")>
 
 <cfif not event.valueExists("useridfk")>
 
@@ -150,7 +151,7 @@ $(document).ready(function() {
 		<tr>
 			<td align="right"><label>Due Date:</label></td>
 			<cfif isDate(dueDate)>
-				<cfset dueDate = dateFormat(dueDate, "mm/dd/yy")>
+				<cfset dueDate = dateFormat(dueDate, settings.dateformat)>
 			</cfif>
 			<td><input type="text" name="duedate" id="duedate" value="#dueDate#" class="smallInput"></td>
 		</tr>
@@ -190,11 +191,11 @@ $(document).ready(function() {
 		<cfif issue.getID() neq 0>
 		<tr>
 			<td align="right"><label>Created:</label></td>
-			<td>#dateFormat(issue.getCreated(),"mm/dd/yy")# #timeFormat(issue.getCreated(),"h:mm tt")#<cfif not isSimpleValue(creator)> by #creator.getName()# (#creator.getUsername()#)</cfif></td>
+			<td>#dateFormat(issue.getCreated(),settings.dateformat)# #timeFormat(issue.getCreated(),"h:mm tt")#<cfif not isSimpleValue(creator)> by #creator.getName()# (#creator.getUsername()#)</cfif></td>
 		</tr>		
 		<tr>
 			<td align="right"><label>Updated:</label></td>
-			<td>#dateFormat(issue.getUpdated(),"mm/dd/yy")# #timeFormat(issue.getUpdated(),"h:mm tt")#</td>
+			<td>#dateFormat(issue.getUpdated(),settings.dateformat)# #timeFormat(issue.getUpdated(),"h:mm tt")#</td>
 		</tr>
 		</cfif>
 		<cfif issue.getID() is not 0>

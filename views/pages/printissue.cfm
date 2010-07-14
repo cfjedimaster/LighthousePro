@@ -7,6 +7,7 @@
 <cfset milestone = viewState.getValue("milestone")>
 <cfset owner = viewState.getValue("owner")>
 <cfset creator = viewState.getValue("creator")>
+<cfset settings = event.getValue("settings")>
 	
 <cfsavecontent variable="output">
 <cfoutput>
@@ -48,7 +49,7 @@
 	</tr>
 	<tr>
 		<td><b>Due Date:</b></td>
-		<td><cfif len(issue.getDueDate())>#dateFormat(issue.getDueDate(),"mm/dd/yy")# #timeFormat(issue.getDueDate(),"h:mm tt")#</cfif></td>
+		<td><cfif len(issue.getDueDate())>#dateFormat(issue.getDueDate(),settings.dateformat)# #timeFormat(issue.getDueDate(),"h:mm tt")#</cfif></td>
 	</tr>
 	<tr>
 		<td><b>Milestone:</b></td>
@@ -68,11 +69,11 @@
 	</tr>
 	<tr>
 		<td><b>Created:</b></td>
-		<td>#dateFormat(issue.getCreated(),"mm/dd/yy")# #timeFormat(issue.getCreated(),"h:mm tt")#</td>
+		<td>#dateFormat(issue.getCreated(),settings.dateformat)# #timeFormat(issue.getCreated(),"h:mm tt")#</td>
 	</tr>
 	<tr>
 		<td><b>Last Updated:</b></td>
-		<td>#dateFormat(issue.getUpdated(),"mm/dd/yy")# #timeFormat(issue.getUpdated(),"h:mm tt")#</td>
+		<td>#dateFormat(issue.getUpdated(),settings.dateformat)# #timeFormat(issue.getUpdated(),"h:mm tt")#</td>
 	</tr>
 	<tr>
 		<td colspan="2">&nbsp;</td>

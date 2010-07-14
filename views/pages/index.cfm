@@ -5,6 +5,7 @@
 <cfset me = event.getValue("currentuser")>
 <cfset issues = event.getValue("issues")>
 <cfset projectswithissues = event.getValue("projectswithissues")>
+<cfset settings = event.getValue("settings")>
 
 <cfoutput>	
 <h2 class="blue">Announcements</h2>
@@ -26,7 +27,7 @@
 		<tr <cfif counter mod 2 is 0>class="dark"</cfif>>
 			<td valign="top" width="150">
 				<strong class="title">#title#</strong><br/>
-				#dateFormat(posted, "dddd, mmmm d, yyyy")#<br/>
+				#dateFormat(posted, settings.dateformat)#<br/>
 				#timeFormat(posted, "hh:mm tt")#
 			</td>
 			<td valign="top">
@@ -84,8 +85,8 @@
 				<td>#locusname#</td>
 				<td>#severityname#</td>
 				<td>#statusname#</td>
-				<td><cfif len(duedate)>#dateFormat(duedate,"m/d/yyy")#<cfelse>&nbsp;</cfif></td>
-				<td><cfif len(updated)>#dateFormat(updated,"m/d/yyy")#<cfelse>&nbsp;</cfif></td>					
+				<td><cfif len(duedate)>#dateFormat(duedate,settings.dateformat)#<cfelse>&nbsp;</cfif></td>
+				<td><cfif len(updated)>#dateFormat(updated,settings.dateformat)#<cfelse>&nbsp;</cfif></td>					
 			</tr>
 			</cfoutput>
 		</cfloop>
