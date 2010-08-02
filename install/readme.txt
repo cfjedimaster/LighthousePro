@@ -21,6 +21,32 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+
+Last Updated: 8/2/10 (2.7.0) 
+WARNING! FLAMING MONKEYS OF DOOM! READ ME OR PIE WILL BE THROWN AT YOU!!!!
+This update contains a database update. All the install scripts were updated. If you want to run an ALTER statement,
+I've included the MySQL version below the list of files updated.
+
+The main purpose of this update is to allow for defaults in projects. You can now default the
+area of the bug, the severity, the type, and the status. This applies to new bugs made in the 
+interface as well as those received via email.
+
+/config/ColdSpring.xml - version #
+/config/ModelGlue.xml - support defaults
+/controller/IssueController.cfc and ProjectController.cfc - ditto
+/install/ - Scripts + install docs mention of new feature. Thank Scott Stroz for the Access update.
+/model/ProejctBean and ProjectGateway - support for defaults
+/view/pages/project.cfm - ditto
+
+And now - the SQL script for those who feel like being fancy.
+
+ALTER TABLE `lh_projects`
+	ADD COLUMN `defaultlocus` varchar(35) NULL, 
+	ADD COLUMN `defaultseverity` varchar(35) NULL, 
+	ADD COLUMN `defaultissuetype` varchar(35) NULL, 
+	ADD COLUMN `defaultstatus` varchar(35) NULL
+GO
+
 Last Updated: 8/2/10 (2.6.8) 
 /config/ColdSpring.xml - forgot to add in mailport setting, version #
 /controller/IssueController.cfc - support delete severity

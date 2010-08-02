@@ -69,7 +69,7 @@
 		<cfset var c = "">
 		
 		<cfquery name="getit" datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
-			select 	id, name, mailserver, mailusername, mailpassword, mailemailaddress
+			select 	id, name, mailserver, mailusername, mailpassword, mailemailaddress, defaultlocus, defaultseverity, defaultissuetype, defaultstatus
 			from	lh_projects
 			where	id = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.id#" maxlength="35">
 		</cfquery>
@@ -141,7 +141,12 @@
 				mailserver = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMailServer()#" maxlength="255">,
 				mailusername = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMailUsername()#" maxlength="255">,
 				mailpassword = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMailPassword()#" maxlength="255">,
-				mailemailaddress = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMailEmailAddress()#" maxlength="255">
+				mailemailaddress = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMailEmailAddress()#" maxlength="255">,
+				defaultLocus = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getDefaultLocus()#" maxlength="35">,
+				defaultSeverity = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getDefaultSeverity()#" maxlength="35">,
+				defaultIssueType = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getDefaultIssueType()#" maxlength="35">,
+				defaultStatus = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getDefaultStatus()#" maxlength="35">
+
 			where id = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getID()#" maxlength="35">
 			
 			</cfquery>
@@ -151,14 +156,18 @@
 			<cfset newID = createUUID()>
 
 			<cfquery datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
-				insert into lh_projects(id,name,mailserver,mailusername,mailpassword,mailemailaddress)
+				insert into lh_projects(id,name,mailserver,mailusername,mailpassword,mailemailaddress,defaultlocus,defaultseverity,defaultissuetype,defaultstatus)
 				values(
 					<cfqueryparam cfsqltype="cf_sql_varchar" value="#newid#" maxlength="35">,
 					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getName()#" maxlength="50">,
 					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMailServer()#" maxlength="255">,
 					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMailUsername()#" maxlength="255">,
 					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMailPassword()#" maxlength="255">,
-					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMailEmailAddress()#" maxlength="255">
+					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMailEmailAddress()#" maxlength="255">,
+					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getDefaultLocus()#" maxlength="35">,
+					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getDefaultSeverity()#" maxlength="35">,
+					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getDefaultIssueType()#" maxlength="35">,
+					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getDefaultStatus()#" maxlength="35">
 					)
 			</cfquery>
 			<cfset arguments.bean.setId(newID)>					

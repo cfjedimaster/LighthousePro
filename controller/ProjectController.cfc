@@ -133,6 +133,12 @@
 		<cfset var selprojectareas = arguments.event.getValue("selprojectareas","")>
 		<cfset var selusers = arguments.event.getValue("selusers","")>
 		
+		<!--- defaults --->
+		<cfset var defaultLocus = arguments.event.getValue("defaultLocus")>
+		<cfset var defaultSeverity = arguments.event.getValue("defaultSeverity")>
+		<cfset var defaultStatus = arguments.event.getValue("defaultStatus")>
+		<cfset var defaultIssueType = arguments.event.getValue("defaultIssueType")>
+		
 		<cfset var errors = "">
 		<cfset var cancel = arguments.event.getValue("cancel")>
 		
@@ -147,6 +153,10 @@
 		<cfset p.setMailEmailAddress(mailemailaddress)>
 		<cfset p.setProjectAreas(selprojectareas)>
 		<cfset p.setUsers(selusers)>
+		<cfset p.setDefaultLocus(defaultLocus)>
+		<cfset p.setDefaultSeverity(defaultSeverity)>
+		<cfset p.setDefaultStatus(defaultStatus)>
+		<cfset p.setDefaultIssueType(defaultIssueType)>
 		
 		<cfset errors = p.validate()>
 				

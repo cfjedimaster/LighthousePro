@@ -7,6 +7,10 @@
 	<cfset variables.instance.mailusername = "" />
 	<cfset variables.instance.mailpassword = "" />
 	<cfset variables.instance.mailemailaddress = "" />
+	<cfset variables.instance.defaultlocus = "" />
+	<cfset variables.instance.defaultseverity = "" />
+	<cfset variables.instance.defaultstatus = "" />
+	<cfset variables.instance.defaultissuetype = "" />
 
 	<cffunction name="setID" returnType="void" access="public" output="false">
 		<cfargument name="id" type="string" required="true">
@@ -61,7 +65,43 @@
 	<cffunction name="getMailEmailAddress" returnType="string" access="public" output="false">
 		<cfreturn variables.instance.MailEmailAddress>
 	</cffunction>
-	
+
+	<cffunction name="setDefaultLocus" returnType="void" access="public" output="false">
+		<cfargument name="defaultLocus" type="string" required="true">
+		<cfset variables.instance.defaultLocus = arguments.defaultLocus>
+	</cffunction>
+  
+	<cffunction name="getDefaultLocus" returnType="string" access="public" output="false">
+		<cfreturn variables.instance.defaultLocus>
+	</cffunction>	
+
+	<cffunction name="setDefaultSeverity" returnType="void" access="public" output="false">
+		<cfargument name="defaultSeverity" type="string" required="true">
+		<cfset variables.instance.defaultSeverity = arguments.defaultSeverity>
+	</cffunction>
+  
+	<cffunction name="getDefaultSeverity" returnType="string" access="public" output="false">
+		<cfreturn variables.instance.defaultSeverity>
+	</cffunction>	
+
+	<cffunction name="setDefaultStatus" returnType="void" access="public" output="false">
+		<cfargument name="defaultStatus" type="string" required="true">
+		<cfset variables.instance.defaultStatus = arguments.defaultStatus>
+	</cffunction>
+  
+	<cffunction name="getDefaultStatus" returnType="string" access="public" output="false">
+		<cfreturn variables.instance.defaultStatus>
+	</cffunction>	
+		
+	<cffunction name="setDefaultIssueType" returnType="void" access="public" output="false">
+		<cfargument name="defaultIssueType" type="string" required="true">
+		<cfset variables.instance.defaultIssueType = arguments.defaultIssueType>
+	</cffunction>
+  
+	<cffunction name="getDefaultIssueType" returnType="string" access="public" output="false">
+		<cfreturn variables.instance.defaultIssueType>
+	</cffunction>	
+				
 	<cffunction name="validate" returnType="array" access="public" output="false">
 		<cfset var errors = arrayNew(1)>
 		<cfset var mailsum = "">

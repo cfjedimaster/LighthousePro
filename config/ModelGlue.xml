@@ -117,8 +117,8 @@
 
 	<event-handler name="action.issuesave" type="securedPage">
 		<broadcasts>
-			<message name="getIssue" />	
 			<message name="getProject" />	
+			<message name="getIssue" />	
 			<message name="saveIssue" />
 		</broadcasts>
 		<results>
@@ -473,8 +473,11 @@
 		
 	<event-handler name="page.project" type="securedPage">
 		<broadcasts>
+			<message name="getIssueTypes" />
 			<message name="getProject" />
 			<message name="getProjectAreas" />
+			<message name="getSeverities" />
+			<message name="getStatuses" />
 			<message name="getUsers" />
 		</broadcasts>
 		<results>
@@ -620,8 +623,8 @@
 
 	<event-handler name="page.viewissue" type="securedPage">
 		<broadcasts>
-			<message name="getIssue" />
 			<message name="getProject" />
+			<message name="getIssue" />
 			<message name="getIssueTypes" />
 			<message name="getProjectAreas" />
 			<message name="getSeverities" />

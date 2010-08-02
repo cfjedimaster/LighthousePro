@@ -106,6 +106,11 @@ CREATE TABLE `lh_projects` (
   `mailusername` varchar(255) NOT NULL default '',
   `mailpassword` varchar(255) NOT NULL default '',
   `mailemailaddress` varchar(255) NOT NULL default '',
+ 	`defaultlocus` varchar(35) NULL, 
+	`defaultseverity` varchar(35) NULL, 
+	`defaultissuetype` varchar(35) NULL, 
+	`defaultstatus` varchar(35) NULL
+  
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -279,3 +284,4 @@ CREATE TABLE `lh_milestones` (
    `projectidfk` 	varchar(35) NOT NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+

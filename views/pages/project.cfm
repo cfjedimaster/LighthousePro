@@ -4,6 +4,9 @@
 <cfset root = event.getValue("myself")>
 <cfset project = event.getValue("project")>
 <cfset projectAreas = event.getValue("projectareas")>
+<cfset issueTypes = event.getValue("issuetypes")>
+<cfset statuses = event.getValue("statuses")>
+<cfset severities = event.getValue("severities")>
 <cfset users = event.getValue("users")>
 
 <cfset name = event.getValue("name", project.getName())>
@@ -12,9 +15,43 @@
 <cfset mailpassword = event.getValue("mailpassword", project.getMailPassword())>
 <cfset mailemailaddress = event.getValue("mailemailaddress", project.getMailEmailAddress())>
 
+<cfset defaultLocus = project.getDefaultLocus()>
+<cfset defaultSeverity = project.getDefaultSeverity()>
+<cfset defaultStatus = project.getDefaultStatus()>
+<cfset defaultIssueType = project.getDefaultIssueType()>
+
 <cfset selProjectAreas = event.getValue("selprojectareas", project.getProjectAreas())>
 <cfset selUsers = event.getValue("selusers", project.getUsers())>
-	
+
+<!---
+Thought about updating the Default PA to reflect selected items.
+Decided to be lazy. Will keep this code in here in case I change my 
+mind later. For now, I'll use a warning - ie, don't pick a default you
+don't actually support. I'll ensure the other code works though in case
+you do.
+<script>
+function arrayFind(arr,val) {
+	for(var i=0; i<arr.length; i++) {
+		if(arr[i] == val) return i;
+	}
+	return -1;
+}
+$(document).ready(function() {
+
+	$("#selectedprojectareas").change(function() {
+		var currentValues = $(this).val();
+		var defaultItem  = $("#defaultlocus")[0];
+		console.dir(currentValues);
+		for(var i=defaultItem.options.length-1;i>=1; i--) {
+			if(arrayFind(currentValues, defaultItem.options[i].value) == -1) {
+				defaultItem.remove(i);
+			}
+		}
+	});
+});
+</script>	
+--->
+
 <h2 class="red">Project Edit</h2>
 <p>
 Use the form below to edit your project. Project Areas refer to the areas of your project where issues
@@ -35,7 +72,7 @@ selected users will be able to work with issues.
 	<tr>
 		<td align="right"><label>Project Area:</label></td>
 		<td>
-		<select name="selprojectareas" multiple size="5" class="input">
+		<select name="selprojectareas" multiple size="5" class="input" id="selectedprojectareas">
 		<cfloop query="projectAreas">
 			<cfoutput><option value="#id#" <cfif listFind(selProjectAreas, id)>selected</cfif>>#name#</option></cfoutput>
 		</cfloop>
@@ -48,6 +85,57 @@ selected users will be able to work with issues.
 		<select name="selusers" multiple size="5" class="input">
 		<cfloop query="users">
 			<cfoutput><option value="#id#" <cfif listFind(selUsers, id)>selected</cfif>>#username# (#name#)</option></cfoutput>
+		</cfloop>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+		Use the following fields to set up defaults for issues created in your project. New issues will use
+		these defaults as well as any issue created via email. Note that selecting a default project area 
+		that is not supported by the project will result in an invalid default for that setting.
+		</td>
+	</tr>
+	<tr>
+		<td align="right"><label>Default Project Area:</label></td>
+		<td>
+		<select name="defaultlocus" class="input" id="defaultlocus">
+		<option value="" <cfif defaultLocus is "">selected</cfif>>None</option>
+		<cfloop query="projectAreas">
+			<cfoutput><option value="#id#" <cfif id is defaultLocus>selected</cfif>>#name#</option></cfoutput>
+		</cfloop>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="right"><label>Default IssueType:</label></td>
+		<td>
+		<select name="defaultissuetype" class="input">
+		<option value="" <cfif defaultIssueType is "">selected</cfif>>None</option>
+		<cfloop query="issueTypes">
+			<cfoutput><option value="#id#" <cfif id is defaultIssueType>selected</cfif>>#name#</option></cfoutput>
+		</cfloop>
+		</select>
+		</td>
+	</tr>	
+	<tr>
+		<td align="right"><label>Default Status:</label></td>
+		<td>
+		<select name="defaultstatus" class="input">
+		<option value="" <cfif defaultstatus is "">selected</cfif>>None</option>
+		<cfloop query="statuses">
+			<cfoutput><option value="#id#" <cfif id is defaultStatus>selected</cfif>>#name#</option></cfoutput>
+		</cfloop>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="right"><label>Default Severity:</label></td>
+		<td>
+		<select name="defaultseverity" class="input">
+		<option value="" <cfif defaultSeverity is "">selected</cfif>>None</option>
+		<cfloop query="severities">
+			<cfoutput><option value="#id#" <cfif id is defaultSeverity>selected</cfif>>#name#</option></cfoutput>
 		</cfloop>
 		</select>
 		</td>

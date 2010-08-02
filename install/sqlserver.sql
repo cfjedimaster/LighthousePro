@@ -116,7 +116,12 @@ CREATE TABLE [dbo].[lh_projects] (
 	[mailserver] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[mailusername] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[mailpassword] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[mailemailaddress] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
+	[mailemailaddress] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[defaultlocus] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[defaultseverity] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[defaultissuetype] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[defaultstatus] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+	
 ) ON [PRIMARY]
 GO
 
