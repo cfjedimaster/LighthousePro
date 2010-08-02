@@ -21,6 +21,10 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 8/2/10 (2.6.8) 
+/config/ColdSpring.xml - forgot to add in mailport setting, version #
+/controller/IssueController.cfc - support delete severity
+
 Last Updated: 5/17/10 (2.6.7) 
 All of the below by Pedro Lopez
 
