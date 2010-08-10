@@ -276,7 +276,7 @@ CREATE TABLE lh_attachments (
 CREATE TABLE `lh_milestones` (
   `Id` varchar(35) NOT NULL default '',
   `name` varchar(50) NOT NULL default '',
-  `duedate` datetime NOT NULL default '0000-00-00 00:00:00',
+  `duedate` datetime null,
    `projectidfk` 	varchar(35) NOT NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

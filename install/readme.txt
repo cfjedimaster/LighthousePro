@@ -24,7 +24,8 @@ Gifts are always welcome. ;)
 Last Updated: 8/9/2010 (2.7.5)
 WARNING! FLAMING NINJA MONKEYS OF DOOM! READ ME OR PIE WILL BE THROWN AT YOU!!!!
 
-This update includes a database update. Scripts were all updated. The SQL for the MySQL version is given below.
+This update includes a database update. Scripts were all updated. The SQL for the MySQL version is given below. There 
+is one new table and a modification to lh_milestones to allow for null due dates.
 
 The reason for this update? You can now save displays of issues as filters. Woot. It kicks butt. Give it a try.
 
@@ -37,6 +38,7 @@ The reason for this update? You can now save displays of issues as filters. Woot
 /model/UserGateway+Service - support for filters
 /views/pages/filters.cfm, viewussues.cfm - ditto
 /views/templates/main.cfm - ditto
+/controller/* - All controllers were updated to fix a bug w/ multiple selections and deletes.
 
 CREATE TABLE lh_filters  ( 
     useridfk        	varchar(35) NULL,
@@ -53,6 +55,9 @@ CREATE TABLE lh_filters  (
     name            	varchar(255) NULL,
     PRIMARY KEY(id)
 )
+GO
+
+ALTER TABLE `lh_milestones` MODIFY COLUMN `duedate` datetime NULL
 GO
 
 =================================== ARCHIVES ===================================
