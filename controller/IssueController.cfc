@@ -49,19 +49,19 @@
 
 	<cffunction name="deleteIssueType" access="public" output="false">
 		<cfargument name="event" type="any">
-		<cfset var markedtodie = arguments.event.getValue("mark")>
+		<cfset var markedtodie = arguments.event.getValue("markbox")>
 		<cfset beans.issueTypeService.deleteIssueTypes(markedtodie)>
 	</cffunction>
 
 	<cffunction name="deleteSeverity" access="public" output="false">
 		<cfargument name="event" type="any">
-		<cfset var markedtodie = arguments.event.getValue("mark")>
+		<cfset var markedtodie = arguments.event.getValue("markbox")>
 		<cfset beans.severityService.deleteSeverities(markedtodie)>
 	</cffunction>
 	
 	<cffunction name="deleteStatus" access="public" output="false">
 		<cfargument name="event" type="any">
-		<cfset var markedtodie = arguments.event.getValue("mark")>
+		<cfset var markedtodie = arguments.event.getValue("markbox")>
 		<cfset beans.statusService.deleteStatuses(markedtodie)>
 	</cffunction>
 	

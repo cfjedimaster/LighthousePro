@@ -33,7 +33,7 @@
 
 	<cffunction name="deleteAnnouncement" access="public" output="false">
 		<cfargument name="event" type="any">
-		<cfset var markedtodie = arguments.event.getValue("mark")>
+		<cfset var markedtodie = arguments.event.getValue("markbox")>
 		<cfset beans.announcementService.deleteAnnouncements(markedtodie)>
 	</cffunction>
 	
