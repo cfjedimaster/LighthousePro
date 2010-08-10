@@ -31,6 +31,7 @@
 
 <script>
 var issuesurl = "#root#page.viewissues&requestformat=json&id=#project.getID()#&stupid=#rand("SHA1PRNG")#";
+var projectid = "#project.getId()#";
 var sort = "prettydate";
 var sortdir = "desc";
 var issuetype = "";
@@ -163,8 +164,54 @@ function updatePage(n) {
 	loadData();
 }
 
-$(document).ready(
-	filterData
+$(document).ready(function() {
+		filterData();
+
+		$("##newFilterForm").dialog({
+			autoOpen:false,
+			modal:true,
+			buttons: {
+				Save:function() {
+					//first, get the value. if blank, we are going to treat like a cancel
+					var filterName = $("##newFilterName").val();
+					filterName = $.trim(filterName);
+					if(filterName == '') { $(this).dialog('close'); return; }
+
+					//gather the data we will see to create this filter
+					var filter = {};
+					filter.name = filterName;
+					filter.projectid = projectid;
+					filter.issuetype = $("##issuetype_filter").val();
+					filter.locus = $("##loci_filter").val();
+					filter.severity = $("##severity_filter").val();
+					filter.status = $("##status_filter").val();
+					filter.owner = $("##owner_filter").val();
+					filter.keyword = $("##keyword_filter").val();
+					filter.milestone = $("##milestone_filter").val();
+					filter.perpage = parseInt($("##perpage_filter").val());
+					
+					//store our filter
+					$.post("#root#action.filterSave", filter, function(res,status) {
+						//reload the filters nav so people know crap was saved
+						reloadFilters();
+						alert('Your filter, '+filterName+' was saved.');
+					});
+
+					$("##newFilterName").val('');
+					$(this).dialog('close');
+				},
+				Cancel:function() {
+					$("##newFilterName").val('');
+					$(this).dialog('close');
+				}
+			}
+		});
+				
+		$("##saveFilter").click(function(e) {
+			$("##newFilterForm").dialog("open");
+			e.preventDefault();
+		});
+	}
 );
 </script>
 	
@@ -232,6 +279,8 @@ $(document).ready(
 	
 	<input type="text" id="keyword_filter" name="keyword_filter" value="#keyword_filter#" onkeyup="filterData()"> <input type="button" value="Keyword Search" onclick="filterData()">
 	<span id="loading"><img src="images/ajax-loader.gif" align="absmiddle"></span>
+	<a href="" id="saveFilter">[Save as Filter]</a>
+
 </fieldset>
 </form>
 </p>
@@ -280,3 +329,10 @@ $(document).ready(
 </p>
 	
 </cfoutput>
+
+<div id="newFilterForm" style="display:none" title="Save Filter">
+<form>
+Enter a name for your filter:
+<input id="newFilterName">
+</form>
+</div>

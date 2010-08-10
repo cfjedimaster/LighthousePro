@@ -70,12 +70,20 @@
 		<cfreturn session.user>
 	</cffunction>
 
+	<cffunction name="deleteFilter" access="public" output="false">
+		<cfargument name="event" type="any">
+		<cfset var me = arguments.event.getValue("currentUser")>
+		<cfset var filter = arguments.event.getValue("id")>
+		<cfset beans.userService.deleteFilter(me, id)>
+	</cffunction>
+	
 	<cffunction name="deleteUser" access="public" output="false">
 		<cfargument name="event" type="any">
 		<cfset var markedtodie = arguments.event.getValue("mark")>
 		<cfset beans.userService.deleteUsers(markedtodie)>
 	</cffunction>
 	
+	<!--- This is used for the view layer drop downs --->
 	<cffunction name="getCurrentFilters" access="private" output="false" returnType="struct">
 		<cfif not structKeyExists(session, "user")>
 			<cfthrow message="Unauthenticated call to getCurrentFilters">
@@ -92,6 +100,34 @@
 			<cfset session.filters.keyword_filter="">
 		</cfif>
 		<cfreturn session.filters>
+	</cffunction>
+
+	<cffunction name="getFilter" access="public" output="false">
+		<cfargument name="event" type="any">
+		<cfset var user = arguments.event.getValue("currentUser")>
+		<cfset var filterid = arguments.event.getValue("id")>
+		<cfset var filter = beans.userService.getFilterForUser(user,filterid)>
+		<!--- todo, nicer error handling --->
+		<cfset session.filters = {}>
+		<cfset session.filters.issuetype_filter = filter.issuetypeidfk>
+		<cfset session.filters.loci_filter = filter.projectlocusidfk>
+		<cfset session.filters.severity_filter = filter.severityidfk>
+		<cfset session.filters.status_filter = filter.statusidfk>
+		<cfset session.filters.owner_filter = filter.assigneduseridfk>
+		<cfset session.filters.milestone_filter = filter.milestoneidfk>
+		<cfset session.filters.keyword_filter = filter.keywordfilter>
+		<cfset session.filters.perpage_filter = filter.resultcount>
+		<cfset arguments.event.setValue("id", filter.projectidfk)>
+		
+		<cfset arguments.event.forward("page.viewissues","id")>
+				
+	</cffunction>
+	
+	<!--- This gets our stored filters --->
+	<cffunction name="getStoredFilters" access="public" output="false">
+		<cfargument name="event" type="any">
+		<cfset user = arguments.event.getValue("currentUser")>
+		<cfset arguments.event.setValue("filters",beans.userService.getFiltersForUser(user))>
 	</cffunction>
 	
 	<cffunction name="getUser" access="public" output="false">
@@ -164,6 +200,13 @@
 		<cfset clearUser()>		
 	</cffunction>
 
+	<cffunction name="saveFilter" access="public" output="false">
+		<cfargument name="event" type="any">
+		<cfset var filter = structNew()>
+		<cfset event.copyToScope(filter, "projectid,issuetype,locus,severity,status,owner,keyword,milestone,perpage,name")>
+		<cfset beans.userService.saveFilter(arguments.event.getValue("currentuser"),filter)>
+	</cffunction>
+	
 	<cffunction name="savePrefs" access="public" output="false">
 		<cfargument name="event" type="any">
 		<cfset var me = arguments.event.getValue("currentuser")>

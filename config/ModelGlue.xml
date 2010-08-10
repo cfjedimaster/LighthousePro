@@ -51,12 +51,16 @@
 		<message-listener message="onRequestStart" />
 		<message-listener message="checkAdmin" />
 		<message-listener message="checkLogin" />
+		<message-listener message="deleteFilter" />
 		<message-listener message="deleteUser" />
+		<message-listener message="getStoredFilters" />		
+		<message-listener message="getFilter" />
 		<message-listener message="getUser" />		
 		<message-listener message="getUsers" />	
 		<message-listener message="persistFilters" />				
 		<message-listener message="processLogin" />
 		<message-listener message="processLogout" />
+		<message-listener message="saveFilter" />
 		<message-listener message="savePrefs" />
 		<message-listener message="saveUser" />
 	</controller>	
@@ -72,6 +76,7 @@
 					<argument name="events" value="announcement,severities,severity,status,issuetype,projectarea,milestone,user,project" />
 				</message>
 				<message name="getMyProjects" />				
+				<message name="getStoredFilters" />				
 			</broadcasts>
 			<results>
 				<result name="notAuthorized" do="page.index" redirect="true" />
@@ -115,6 +120,24 @@
 		<views />
 	</event-handler>
 
+	<event-handler name="action.filterDelete" type="securedPage">
+		<broadcasts>
+			<message name="deleteFilter" />
+		</broadcasts>
+		<results>
+		</results>
+		<views />
+	</event-handler>
+	
+	<event-handler name="action.filtersave" type="securedPage">
+		<broadcasts>
+			<message name="saveFilter" />
+		</broadcasts>
+		<results>
+		</results>
+		<views />
+	</event-handler>
+	
 	<event-handler name="action.issuesave" type="securedPage">
 		<broadcasts>
 			<message name="getProject" />	
@@ -209,6 +232,9 @@
 			<message name="savePrefs" />
 		</broadcasts>
 		<results>
+			<!-- For right now, all 3 do the same - will address later -->
+			<result name="good" do="page.prefs" redirect="true" />
+			<result name="bad" do="page.prefs" redirect="true" />
 			<result do="page.prefs" redirect="true" />
 		</results>
 		<views />
@@ -406,7 +432,18 @@
 			<include name="body" template="pages/issuetypes.cfm" />
 		</views>
 	</event-handler>
-		
+
+	<event-handler name="page.loadfilter" type="securedPage">
+		<broadcasts>
+			<message name="getFilter" />
+		</broadcasts>
+		<results>
+			<result name="Bad" do="page.index" />
+		</results>
+		<views>
+		</views>
+	</event-handler>
+			
 	<event-handler name="page.login">
 		<views>
 			<include name="body" template="pages/login.cfm" />
@@ -621,6 +658,17 @@
 		</views>
 	</event-handler>				
 
+	<event-handler name="page.viewfilters" type="securedPage">
+		<broadcasts>
+			<message name="getStoredFilters" />
+		</broadcasts>
+		<results>
+		</results>
+		<views>
+			<include name="body" template="pages/filters.cfm" />
+		</views>
+	</event-handler>
+	
 	<event-handler name="page.viewissue" type="securedPage">
 		<broadcasts>
 			<message name="getProject" />

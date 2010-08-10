@@ -68,7 +68,7 @@ body {
 	color: #666;
 }
 
-a{text-decoration: none; outline:none;}
+a{text-decoration: none; outline:none; color: #623536}
 a:hover{text-decoration: underline;}
 a img{border: none;}
 h1, h2, h3, h4, h5, h6 {

@@ -4,6 +4,7 @@
 <cfset selected = event.getValue("selected","home")>
 <cfset projects = event.getValue("myprojects", queryNew("id"))>
 <cfset me = event.getValue("currentuser")>
+<cfset filters = event.getValue("filters")>
 
 <cfparam name="url.id" default="" type="string">
 <cfparam name="url.pid" default="#url.id#" type="string">
@@ -23,13 +24,39 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.ui.min.js"></script>
 		<script type="text/javascript">
-		 	function confirmDialog(message, url) {
-		 		
-		 		var confirmState=window.confirm(message);
-				if (confirmState) {
-					window.location = url;
-				} 
-		 	}
+		function reloadFilters() {
+			$.getJSON('#root#page.viewfilters', {}, function(res) {
+				var s = "";
+				if(res.recordcount) {
+					for(var i=0; i<res.recordcount; i++) {
+						s += "<li><a href='#root#page.loadfilter&id="+res.data.id[i]+"' class='blueLink'>" + res.data.name[i] + "</a> <a href='"+res.data.id[i]+"' class='killFilter'>[X]</a></li>";
+					}
+				} else {
+					s = "<li>You do not have any filters yet.</li>";
+				}
+				$("##filterList").html(s);
+			});
+		}
+				
+	 	function confirmDialog(message, url) {
+	 		
+	 		var confirmState=window.confirm(message);
+			if (confirmState) {
+				window.location = url;
+			} 
+	 	}
+
+		$(document).ready(function() {
+			$("##filterList").delegate(".killFilter","click", function(e) {
+				if(confirm("Are you sure you want to delete this filter?")) {
+					var filterToKill = $(this).attr("href");
+					$.post("#root#action.filterdelete", {"id":filterToKill}, function(res) {
+						reloadFilters();
+					});
+				}
+				e.preventDefault();
+			});
+		});
 		
 		</script>
 		
@@ -85,6 +112,16 @@
 								<li>Sorry, but there are no projects available.</li>
 							</cfif>
 						</ul>
+					<h5>Your Filters</h5>
+					<ul id="filterList">
+					<cfif filters.recordCount>
+						<cfloop query="filters">
+							<li><a href="#root#page.loadfilter&id=#id#" class="blueLink">#name#</a> <a href="#id#" title="Delete Filter" class="killFilter">[X]</a></li>
+						</cfloop>
+					<cfelse>
+						<li>You do not have any filters yet.</li>
+					</cfif>
+					</ul>
 			        <cfif me.hasRole("admin")>
 					<h5>Admin Menu</h5>
 					<ul>

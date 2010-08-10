@@ -273,3 +273,26 @@ CREATE TABLE [dbo].[lh_milestones] (
 	[projectidfk] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL 
 ) ON [PRIMARY]
 GO
+
+CREATE TABLE [dbo].[lh_filters]  ( 
+	[id] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[projectidfk] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[useridfk] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[issuetypeidfk] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[projectlocusidfk] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[severityidfk] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[statusidfk] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[assigneduseridfk] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[resultcount] [int] NULL,
+	[milestoneidfk] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[keywordfilter] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[name] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+) ON [PRIMARY]
+GO	
+
+ALTER TABLE [dbo].[lh_filters] WITH NOCHECK ADD 
+	CONSTRAINT [PK_lh_filters] PRIMARY KEY  CLUSTERED 
+	(
+		[id]
+	)  ON [PRIMARY] 
+GO

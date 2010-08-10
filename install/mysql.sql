@@ -109,7 +109,7 @@ CREATE TABLE `lh_projects` (
  	`defaultlocus` varchar(35) NULL, 
 	`defaultseverity` varchar(35) NULL, 
 	`defaultissuetype` varchar(35) NULL, 
-	`defaultstatus` varchar(35) NULL
+	`defaultstatus` varchar(35) NULL,
   
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -273,10 +273,6 @@ CREATE TABLE lh_attachments (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
 CREATE TABLE `lh_milestones` (
   `Id` varchar(35) NOT NULL default '',
   `name` varchar(50) NOT NULL default '',
@@ -284,4 +280,24 @@ CREATE TABLE `lh_milestones` (
    `projectidfk` 	varchar(35) NOT NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE lh_filters  ( 
+    useridfk        	varchar(35) NULL,
+    projectidfk     	varchar(35) NULL,
+    issuetypeidfk   	varchar(35) NULL,
+    projectlocusidfk	varchar(35) NULL,
+    severityidfk    	varchar(35) NULL,
+    statusidfk      	varchar(35) NULL,
+    assigneduseridfk	varchar(35) NULL,
+    resultcount     	int(11) NULL,
+    milestoneidfk   	varchar(35) NULL,
+    keywordfilter   	varchar(255) NULL,
+    id              	varchar(35) NOT NULL,
+    name            	varchar(255) NULL,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 

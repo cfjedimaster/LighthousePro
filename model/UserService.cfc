@@ -40,6 +40,12 @@
 		<cfreturn auth.recordCount gte 1>	
 	</cffunction>
 
+	<cffunction name="deleteFilter" access="public" returnType="void" output="false">
+		<cfargument name="user" type="any" required="true">
+		<cfargument name="id" type="uuid" required="true">
+		<cfset variables.gateway.deleteFilter(argumentCollection=arguments)>
+	</cffunction>
+	
 	<cffunction name="deleteUsers" access="public" returnType="void" output="false">
 		<cfargument name="list" type="any" required="true">
 		<cfset var id = "">
@@ -49,6 +55,17 @@
 		</cfloop>
 		
 	</cffunction>	
+
+	<cffunction name="getFilterForUser" access="public" returnType="query" output="false">
+		<cfargument name="user" type="any" required="true">
+		<cfargument name="filter" type="any" required="true">
+		<cfreturn variables.gateway.getFilterForUser(arguments.user.getId(),arguments.filter)>
+	</cffunction>
+	
+	<cffunction name="getFiltersForUser" access="public" returnType="query" output="false">
+		<cfargument name="user" type="any" required="true">
+		<cfreturn variables.gateway.getFiltersForUser(arguments.user.getId())>
+	</cffunction>
 	
 	<cffunction name="getUser" access="public" returnType="UserBean" output="false"
 				hint="Gets a user bean based on id">		
@@ -73,6 +90,13 @@
 
 	</cffunction>	
 
+	<cffunction name="saveFilter" access="public" returnType="void" output="false">
+		<cfargument name="user" type="any" required="true">
+		<cfargument name="filter" type="struct" required="true">
+		<!--- Not going to worry about a bean for this, let's just ask our gateway to persis it. --->
+		<cfset variables.gateway.saveFilter(argumentCollection=arguments)>
+	</cffunction>
+	
 	<cffunction name="saveUser" access="public" returnType="void" output="false">
 		<cfargument name="user" type="any" required="true">
 		<cfset variables.gateway.saveUser(arguments.user)>

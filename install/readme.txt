@@ -21,6 +21,41 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 8/9/2010 (2.7.5)
+WARNING! FLAMING NINJA MONKEYS OF DOOM! READ ME OR PIE WILL BE THROWN AT YOU!!!!
+
+This update includes a database update. Scripts were all updated. The SQL for the MySQL version is given below.
+
+The reason for this update? You can now save displays of issues as filters. Woot. It kicks butt. Give it a try.
+
+/config/ColdSpring.xml - version
+/config/ModelGlue.xml - support for filters
+/controller/UserController.cfc - ditto
+/css/global.css - add color to plain links
+/install/ All DB scripts + install guide description of filters. Thanks to Scott Stroz for the MS Access update.
+/js/jquery.min.js - updated to jQuery 1.4
+/model/UserGateway+Service - support for filters
+/views/pages/filters.cfm, viewussues.cfm - ditto
+/views/templates/main.cfm - ditto
+
+CREATE TABLE lh_filters  ( 
+    useridfk        	varchar(35) NULL,
+    projectidfk     	varchar(35) NULL,
+    issuetypeidfk   	varchar(35) NULL,
+    projectlocusidfk	varchar(35) NULL,
+    severityidfk    	varchar(35) NULL,
+    statusidfk      	varchar(35) NULL,
+    assigneduseridfk	varchar(35) NULL,
+    resultcount     	int(11) NULL,
+    milestoneidfk   	varchar(35) NULL,
+    keywordfilter   	varchar(255) NULL,
+    id              	varchar(35) NOT NULL,
+    name            	varchar(255) NULL,
+    PRIMARY KEY(id)
+)
+GO
+
+=================================== ARCHIVES ===================================
 
 Last Updated: 8/2/10 (2.7.0) 
 WARNING! FLAMING MONKEYS OF DOOM! READ ME OR PIE WILL BE THROWN AT YOU!!!!
