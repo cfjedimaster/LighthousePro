@@ -35,6 +35,7 @@
 		<cfset var username = "">
 		<cfset var password = "">
 		<cfset var settings = "">
+		<cfset var reqData = "">
 		
 		<!--- handle auto login via rss --->
 		<cfif len(auth)>	
@@ -49,9 +50,14 @@
 		</cfif>
 		
 		<cfif not loggedIn()>
-			<!--- store what we had wanted --->
-			<cfset arguments.event.setValue("desiredurl", cgi.query_string)>
-			<cfset arguments.event.addResult("needLogin")>
+			<cfset reqData = getHTTPRequestData()>
+			<cfif structKeyExists(reqData.headers,"X-Requested-With") and reqData.headers["X-Requested-With"] eq "XMLHttpRequest">
+				<cfthrow message="SessionTimeout">
+			<cfelse>
+				<!--- store what we had wanted --->
+				<cfset arguments.event.setValue("desiredurl", cgi.query_string)>
+				<cfset arguments.event.addResult("needLogin")>
+			</cfif>
 		</cfif>
 
 	</cffunction>

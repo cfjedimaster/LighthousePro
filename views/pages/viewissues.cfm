@@ -165,6 +165,16 @@ function updatePage(n) {
 }
 
 $(document).ready(function() {
+
+		$.ajaxSetup({
+			error:function(x,e){
+				if(x.status == 500 && x.statusText == "SessionTimeout") {
+					alert("Your session has timed out.");
+					location.href = 'index.cfm';
+				}
+			}
+		});
+	
 		filterData();
 
 		$("##newFilterForm").dialog({
