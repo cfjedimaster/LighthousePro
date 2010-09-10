@@ -24,7 +24,7 @@ Gifts are always welcome. ;)
 Last Updated: 9/10/2010 (2.7.6)
 favicon added by Sebastiaan GMC Naafs - van Dijk
 /controller/UserController.cfc, /views/viewissues.cfm, /views/exception.cfm: Updated to support a session logout event via Ajax
-
+/config/ColdSpring.xml - version
 
 Last Updated: 8/9/2010 (2.7.5)
 WARNING! FLAMING NINJA MONKEYS OF DOOM! READ ME OR PIE WILL BE THROWN AT YOU!!!!
