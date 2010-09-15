@@ -134,7 +134,7 @@
 					</cfif>
 					<cfif project.getDefaultLocus() neq "">
 						<!--- We do need to validate here though - so sorry --->
-						<cfif listFind(project.getProjectAreas(), project.getDefaultLocs())>
+						<cfif listFind(project.getProjectAreas(), project.getDefaultLocus())>
 							<cfset issue.setLocusIdFk(project.getDefaultLocus())>
 						</cfif>
 					</cfif>
