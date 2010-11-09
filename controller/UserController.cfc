@@ -279,7 +279,7 @@
 		<cfset var me = getCurrentUser()>
 		
 		<cfset u.setUserName(left(username,50))>
-		<cfif resetpassword>
+		<cfif len(resetpassword)>
 			<cfset u.setPassword(password)>
 		</cfif>
 		<cfset u.setName(left(name,50))>

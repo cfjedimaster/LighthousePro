@@ -21,6 +21,10 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 9/14/2010 (2.7.8)
+/controller/UserController.cfc - bug with user save, fix from Rodion Bykov (http://lighthousepro.riaforge.org/index.cfm?event=page.issue&issueid=ACA6EC7C-EF9C-1420-80E57D6548C75AE9)
+/config/ColdSpring.xml - version
+
 Last Updated: 9/14/2010 (2.7.7)
 /controller/IssueController.cfc - bug with the mail process
 /config/ColdSpring.xml - version
