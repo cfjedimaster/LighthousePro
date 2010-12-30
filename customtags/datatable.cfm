@@ -104,10 +104,15 @@
 function checksubmit() {
 	var confirmState=window.confirm("DELETE - are you sure?");
 	if (confirmState) {
-		var data = $("##listing input:checked").val()
-		if(!data) return
-		$("##mark").val(data)
-		$("##listingform").submit()
+		var ItemsToDel = [];
+		$("##listing input:checked").each(function() { 
+		   ItemsToDel.push($(this).val());
+		});
+		ItemsToDel.join(",");
+		
+		if(ItemsToDel.length == 0) return;
+		$("##mark").val(ItemsToDel)
+		$("##listingform").submit();
 	}
 }
 </script>

@@ -57,7 +57,7 @@
 			<entry key="plaintextpassword"><value>true</value></entry>
 			<entry key="rssfeedsenabled"><value>true</value></entry>
 			<entry key="dateformat"><value>mm/dd/yyyy</value></entry>
-			<entry key="version"><value>2.7.8</value></entry>
+			<entry key="version"><value>2.7.9</value></entry>
 		</map>
 	</property>
 </bean>

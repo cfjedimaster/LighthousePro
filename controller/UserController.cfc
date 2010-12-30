@@ -85,7 +85,7 @@
 	
 	<cffunction name="deleteUser" access="public" output="false">
 		<cfargument name="event" type="any">
-		<cfset var markedtodie = arguments.event.getValue("markbox")>
+		<cfset var markedtodie = arguments.event.getValue("mark")>
 		<cfset beans.userService.deleteUsers(markedtodie)>
 	</cffunction>
 	

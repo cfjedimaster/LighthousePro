@@ -10,7 +10,7 @@
 
 	<cffunction name="deleteMilestone" access="public" output="false">
 		<cfargument name="event" type="any">
-		<cfset var markedtodie = arguments.event.getValue("markbox")>
+		<cfset var markedtodie = arguments.event.getValue("mark")>
 		<!--- get one of the milestones so we can sniff the project --->
 		<cfset var m = "">
 		
@@ -23,14 +23,14 @@
 
 	<cffunction name="deleteProject" access="public" output="false">
 		<cfargument name="event" type="any">
-		<cfset var markedtodie = arguments.event.getValue("markbox")>
+		<cfset var markedtodie = arguments.event.getValue("mark")>
 		
 		<cfset beans.projectService.deleteProjects(markedtodie)>
 	</cffunction>
 	
 	<cffunction name="deleteProjectArea" access="public" output="false">
 		<cfargument name="event" type="any">
-		<cfset var markedtodie = arguments.event.getValue("markbox")>
+		<cfset var markedtodie = arguments.event.getValue("mark")>
 		<cfset beans.projectAreaService.deleteProjectAreas(markedtodie)>
 	</cffunction>
 

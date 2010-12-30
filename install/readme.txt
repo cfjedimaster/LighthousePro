@@ -1,7 +1,7 @@
 ReadMe
 
 LICENSE 
-Copyright 2010 Raymond Camden
+Copyright 2010-2011 Raymond Camden
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -20,6 +20,13 @@ Copyright 2010 Raymond Camden
 This application was created by Raymond Camden (ray@camdenfamily.com). 
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
+
+Last Updated: 12/29/2010 (2.7.9)
+/controller/*.cfc - fix for IE/delete issue by Marc,described here: http://lighthousepro.riaforge.org/index.cfm?event=page.issue&issueid=6A02DB16-9747-9179-CE0026445351C4C8
+/customtags/datatable.cfm - see above
+/model/SeverityBean and StatusBean.cfc - handle passing a non-numeric value to rank
+/view/pages/milestone.cfm - support handling no projects
+/config/ColdSpring.xml - version
 
 Last Updated: 9/14/2010 (2.7.8)
 /controller/UserController.cfc - bug with user save, fix from Rodion Bykov (http://lighthousepro.riaforge.org/index.cfm?event=page.issue&issueid=ACA6EC7C-EF9C-1420-80E57D6548C75AE9)

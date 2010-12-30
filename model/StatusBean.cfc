@@ -24,11 +24,11 @@
 	</cffunction>	
 	
 	<cffunction name="setRank" returnType="void" access="public" output="false">
-		<cfargument name="rank" type="numeric" required="true">
+		<cfargument name="rank" type="any" required="true">
 		<cfset variables.instance.rank = arguments.rank>
 	</cffunction>
 	
-	<cffunction name="getRank" returnType="numeric" access="public" output="false">
+	<cffunction name="getRank" returnType="any" access="public" output="false">
 		<cfreturn variables.instance.rank>
 	</cffunction>
 		
@@ -38,7 +38,9 @@
 		<cfif not len(trim(getName()))>
 			<cfset arrayAppend(errors,"Name cannot be blank.")>
 		</cfif>
-		<cfif getRank() LTE 0>
+		<cfif not isNumeric(getRank())>
+			<cfset arrayAppend(errors, "Rank must be a numeric value.")>
+		<cfelseif getRank() LTE 0>
 			<cfset arrayAppend(errors, "Rank must be greater than zero.")>
 		</cfif>
 
