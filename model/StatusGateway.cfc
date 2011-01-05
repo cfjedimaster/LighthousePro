@@ -56,7 +56,7 @@
 			from 
 				lh_statuses
 			order by
-				rank asc
+				rank asc, name asc
 		</cfquery>
 
 		<cfreturn data>

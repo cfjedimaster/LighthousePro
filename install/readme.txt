@@ -21,6 +21,13 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 1/4/2011 (2.8)
+/config/ColdSpring.xml - version
+/views/pages/milestone.cfm and milestonelist.cfm - when you added a new milestone to project N, N wasn't selected by default in the drop down
+/views/pages/issuetypes.cfm - typo
+/model/StatusGateway.cfc - suggestion to sort by rank AND name
+/views/pages/project.cfm - use password field type for password
+
 Last Updated: 12/29/2010 (2.7.9)
 /controller/*.cfc - fix for IE/delete issue by Marc,described here: http://lighthousepro.riaforge.org/index.cfm?event=page.issue&issueid=6A02DB16-9747-9179-CE0026445351C4C8
 /customtags/datatable.cfm - see above

@@ -9,8 +9,12 @@
 <cfif len(duedate)>
 	<cfset duedate = dateFormat(dueDate, settings.dateformat)>
 </cfif>		
-<cfset project = event.getValue("project", milestone.getProjectIDFK())>
-
+<cfif milestone.getId() neq "0">
+	<cfset project = event.getValue("project", milestone.getProjectIDFK())>
+<cfelse>
+	<cfset project = event.getValue("project")>
+</cfif>
+	
 <cfset projects = event.getValue("projects")>
 	
 <cfset errors = event.getValue("errors")>

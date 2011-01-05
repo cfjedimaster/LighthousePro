@@ -158,7 +158,7 @@ selected users will be able to work with issues.
 	</tr>
 	<tr>
 		<td align="right"><label>Password:</label></td>
-		<td><input type="text" name="mailpassword" value="#mailpassword#" class="input"></td>
+		<td><input type="password" name="mailpassword" value="#mailpassword#" class="input"></td>
 	</tr>
 	<tr>
 		<td align="right"><label>Email Address:</label></td>

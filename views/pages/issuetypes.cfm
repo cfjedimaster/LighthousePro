@@ -6,7 +6,7 @@
 
 <h2 class="red">Issue Types</h2>
 <p>
-Use the form below to select an issue type to edit. You may also create or delete an issue status.
+Use the form below to select an issue type to edit. You may also create or delete an issue type.
 </p>
 
 <cf_datatable data="#issuetypes#" queryString="event=#event.getValue(event.getValue("eventValue"))#" editlink="#root#page.issuetype" deletelink="#root#action.issuetypedelete" label="Issue Type" linkcol="name">
