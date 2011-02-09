@@ -40,13 +40,17 @@
 		<!--- handle auto login via rss --->
 		<cfif len(auth)>	
 			<cfset settings = beans.applicationSettings.getConfig()>
+			<cftry>
 			<cfset auth = decrypt(auth, settings.secretkey)>
-			<cfset username = listLast(listFirst(auth, "&"),"=")>
-			<cfset password = listLast(listLast(auth, "&"),"=")>
-			<cfif beans.userService.authenticate(username,password)>
-				<cfset storeUser(beans.userService.getUserByUsername(username))>
-				<cfset arguments.event.setValue("currentuser", getCurrentUser())>				
-			</cfif>
+				<cfset username = listLast(listFirst(auth, "&"),"=")>
+				<cfset password = listLast(listLast(auth, "&"),"=")>
+				<cfif beans.userService.authenticate(username,password)>
+					<cfset storeUser(beans.userService.getUserByUsername(username))>
+					<cfset arguments.event.setValue("currentuser", getCurrentUser())>				
+				</cfif>
+			<cfcatch>
+			</cfcatch>
+			</cftry>
 		</cfif>
 		
 		<cfif not loggedIn()>

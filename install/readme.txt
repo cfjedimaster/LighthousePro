@@ -21,6 +21,14 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 2/9/2011 (2.9)
+/config/ColdSpring.xml.cfm - version
+/controller/IssueController.cfc - corrects a bug where we weren't using the dateFormat mask
+/controller/UserController.cfc - suppress login errors via rss
+/views/exception.cfm - We now suppress errors unless you are logged in as an admin. I'll be coming back to this soon.
+
+MS ACCESS IS NO LONGER SUPPORTED!
+
 Last Updated: 1/4/2011 (2.8)
 /config/ColdSpring.xml - version
 /views/pages/milestone.cfm and milestonelist.cfm - when you added a new milestone to project N, N wasn't selected by default in the drop down
