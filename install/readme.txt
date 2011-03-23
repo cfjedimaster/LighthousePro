@@ -21,6 +21,12 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 2/9/2011 (2.9.01)
+/config/ColdSpring.xml.cfm - version
+/config/ColdSpring.xml.cfm - New setting, datepickerdateformat - used to specify a dateformat for the jQuery UI date picker. Read the text in the
+config file for details.
+/views/pages/issue.cfm - updated to use the new setting
+
 Last Updated: 2/9/2011 (2.9)
 /config/ColdSpring.xml.cfm - version
 /controller/IssueController.cfc - corrects a bug where we weren't using the dateFormat mask

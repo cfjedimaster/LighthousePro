@@ -57,7 +57,15 @@
 			<entry key="plaintextpassword"><value>true</value></entry>
 			<entry key="rssfeedsenabled"><value>true</value></entry>
 			<entry key="dateformat"><value>mm/dd/yyyy</value></entry>
-			<entry key="version"><value>2.9</value></entry>
+			<!-- 
+			Unfortunately, the jQuery UI date picker has a slightly different format for it's dates, so for example,
+			the typical Euro format of dd/mm/yyyy must be dd/mm/yy instead. So, I've had to make a second setting and you are 
+			responsible for updating it if you tweak the format above. Details of the mask may be found here:
+			http://docs.jquery.com/UI/Datepicker/formatDate
+			
+			 -->
+			<entry key="datepickerdateformat"><value>mm/dd/yy</value></entry>
+			<entry key="version"><value>2.9.01</value></entry>
 		</map>
 	</property>
 </bean>

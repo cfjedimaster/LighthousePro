@@ -58,7 +58,9 @@
 
 <script>
 $(document).ready(function() {
-	$("#duedate").datepicker({showOn: 'button', buttonImage: 'images/calendar.gif', buttonImageOnly: true});
+	<cfoutput>
+	$("##duedate").datepicker({showOn: 'button', buttonImage: 'images/calendar.gif', buttonImageOnly: true, dateFormat:'#settings.datepickerdateformat#'});
+	</cfoutput>
 })
 </script>
 
