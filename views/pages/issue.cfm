@@ -59,7 +59,12 @@
 <script>
 $(document).ready(function() {
 	<cfoutput>
-	$("##duedate").datepicker({showOn: 'button', buttonImage: 'images/calendar.gif', buttonImageOnly: true, dateFormat:'#settings.datepickerdateformat#'});
+	$("##duedate").datepicker({showOn: 'button', 
+							   buttonImage: 'images/calendar.gif', 
+							   buttonImageOnly: true, 
+							   altField:'##duedate2', 
+							   altFormat:'#settings.datepickerdateformat#'
+							   });
 	</cfoutput>
 })
 </script>
@@ -153,9 +158,12 @@ $(document).ready(function() {
 		<tr>
 			<td align="right"><label>Due Date:</label></td>
 			<cfif isDate(dueDate)>
-				<cfset dueDate = dateFormat(dueDate, settings.dateformat)>
+				<cfset dueDateF = dateFormat(dueDate, settings.dateformat)>
+				<cfset dueDate = dateFormat(dueDate,"mm/dd/yyy")>
+			<cfelse>
+				<cfset dueDateF = "">
 			</cfif>
-			<td><input type="text" name="duedate" id="duedate" value="#dueDate#" class="smallInput"></td>
+			<td><input type="text" name="duedate2" id="duedate2" value="#dueDateF#"> <input type="hidden" name="duedate" id="duedate" value="#dueDate#" class="smallInput"></td>
 		</tr>
 		<tr>
 			<td align="right"><label>Related URL:</label></td>
