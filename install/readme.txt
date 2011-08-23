@@ -21,6 +21,12 @@ This application was created by Raymond Camden (ray@camdenfamily.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 8/23/2011 (2.9.02)
+/views/pages/issue.cfm - more work on the date picker. If you use a NON American locale and you used Due Date, you will need to fix entries so that they
+get re-recorded with the right format - which should be local machine NOT your custom locale. We then display it correctly on the front
+end. (Hopefully)
+/controller/IssueController.cfc - Oliver Clark updated the HTML email to work correctly in GMail.
+
 Last Updated: 2/9/2011 (2.9.01)
 /config/ColdSpring.xml.cfm - version
 /config/ColdSpring.xml.cfm - New setting, datepickerdateformat - used to specify a dateformat for the jQuery UI date picker. Read the text in the
