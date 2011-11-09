@@ -17,9 +17,13 @@ Copyright 2010-2011 Raymond Camden
    
   
 
-This application was created by Raymond Camden (ray@camdenfamily.com). 
+This application was created by Raymond Camden (raymondcamden@gmail.com). 
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
+
+Last Updated: 11/09/2011 (2.9.03)
+/config/ColdSpring.xml.cfm - version
+/helpers/json.cfc - Added Ben Nadel's cleanHighAsci and added a specific check for vertical tabs.
 
 Last Updated: 8/23/2011 (2.9.02)
 /views/pages/issue.cfm - more work on the date picker. If you use a NON American locale and you used Due Date, you will need to fix entries so that they
