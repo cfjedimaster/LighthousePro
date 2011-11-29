@@ -21,6 +21,11 @@ This application was created by Raymond Camden (raymondcamden@gmail.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 11/29/2011 (2.9.04)
+/config/ColdSpring.xml.cfm - version
+/controller/IssueCOntroller.cfc - fixes a bug when a non-admin switched the project for an issue, found by Andrew
+
+
 Last Updated: 11/09/2011 (2.9.03)
 /config/ColdSpring.xml.cfm - version
 /helpers/json.cfc - Added Ben Nadel's cleanHighAsci and added a specific check for vertical tabs.
