@@ -62,6 +62,7 @@ CREATE TABLE `lh_issues` (
   `publicid` int(11) default NULL,
   `duedate` date default NULL,
   `milestoneidfk` varchar(35) NOT NULL default '',
+  `archived` tinyint(1) null,
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -294,6 +295,7 @@ CREATE TABLE lh_filters  (
     keywordfilter   	varchar(255) NULL,
     id              	varchar(35) NOT NULL,
     name            	varchar(255) NULL,
+    archived          tinyint(1) null
     PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

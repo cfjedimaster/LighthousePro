@@ -18,8 +18,9 @@
 <cfset history = event.getValue("history", issue.getHistory())>
 <cfset notes = event.getValue("notes")>
 <cfset duedate = event.getValue("duedate", issue.getDueDate())>
-<cfset settings = event.getValue("settings")>
 
+<cfset archived = event.getValue("archived", issue.getArchived())>
+<cfset settings = event.getValue("settings")>
 <cfif not event.valueExists("useridfk")>
 
 	<cfif issue.getId() is 0>
@@ -216,6 +217,12 @@ $(document).ready(function() {
 		<cfelse>
 		<input type="hidden" name="notes" value="">
 		</cfif>	
+		<tr>
+			<td align="right" valign="top"><label for="archived">Archived:</label></td>
+			<td><input type="checkbox" name="archived" id="archived" <cfif archived>checked</cfif> value="1"><br/>
+			<i>Archived issues will not show up in searches by default and will be returned in RSS feeds.</i>
+			</td>
+		</tr>
 		<tr>
 			<td>&nbsp;</td>
 			<td>

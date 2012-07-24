@@ -134,17 +134,18 @@ font-size:0.85em;
 		border: 1px solid #9c9;
 		}
 		
-	.error{
+	.error {
 		background: #FFE3E0;
 	    color: #E31B0C; 
 		border: 1px solid #DC6E66;
 		}
-	#msg.error{padding: 0 0 5px 0;}
+	#msg.error{padding: 10px 0 0 10px;}
 	.error h5{color: #fff; background: #E31B0C; padding: 3px;}
 	
 	.error .errorlist{font-size: 90%; margin-bottom: 0; padding-bottom: 0;}
 	.error .errorlist li{list-style:disc;}
-		
+	ul.errorList { padding-bottom: 0px;}
+
 button { 
   border:0; 
   font-weight:bold; 

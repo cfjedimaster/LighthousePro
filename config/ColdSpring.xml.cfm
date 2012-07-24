@@ -65,7 +65,7 @@
 			
 			 -->
 			<entry key="datepickerdateformat"><value>mm/dd/yy</value></entry>
-			<entry key="version"><value>2.9.04</value></entry>
+			<entry key="version"><value>2.9.1</value></entry>
 		</map>
 	</property>
 </bean>

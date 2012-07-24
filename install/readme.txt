@@ -1,7 +1,7 @@
 ReadMe
 
 LICENSE 
-Copyright 2010-2011 Raymond Camden
+Copyright 2010-2012 Raymond Camden
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -20,6 +20,18 @@ Copyright 2010-2011 Raymond Camden
 This application was created by Raymond Camden (raymondcamden@gmail.com). 
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
+
+Last Updated: 11/29/2011 (2.9.1)
+/config/ColdSpring.xml.cfm - version
+Credit Sebastiaan van Dijk for noticing Project Deletion did not clean up attachments or announcements!
+
+Also noticed in user deletion I didn't remove their filters.
+
+Minor UI fix with errors.
+
+Many files updated - I think it would be easier to consult the SVN history to get a list. On top of the above, I've added "archived"
+as a property to issues (and filters - so please add a new archived column to both tables). Archived issues never show up unless you explicitely
+ask for them in the UI.
 
 Last Updated: 11/29/2011 (2.9.04)
 /config/ColdSpring.xml.cfm - version

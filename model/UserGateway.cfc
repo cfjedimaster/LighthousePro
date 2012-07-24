@@ -53,6 +53,12 @@
 		delete from lh_projects_users_email
 		where useridfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.id#" maxlength="35">
 		</cfquery>
+
+		<!--- clean up filters --->
+		<cfquery datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
+		delete from lh_filters
+		where useridfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.id#" maxlength="35">
+		</cfquery>
 			
 	</cffunction>
 
@@ -63,7 +69,7 @@
 		<cfset var data = "">
 		
 		<cfquery name="data" datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
-		select	id, projectidfk, issuetypeidfk, projectlocusidfk, severityidfk, statusidfk, assigneduseridfk, resultcount, milestoneidfk, keywordfilter, name
+		select	id, projectidfk, issuetypeidfk, projectlocusidfk, severityidfk, statusidfk, assigneduseridfk, resultcount, milestoneidfk, keywordfilter, archived, name
 		from	lh_filters
 		where	useridfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.userid#">
 		and		id = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.filterid#">
@@ -78,7 +84,7 @@
 		<cfset var data = "">
 		
 		<cfquery name="data" datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
-		select	id, projectidfk, issuetypeidfk, projectlocusidfk, severityidfk, statusidfk, assigneduseridfk, resultcount, milestoneidfk, keywordfilter, name
+		select	id, projectidfk, issuetypeidfk, projectlocusidfk, severityidfk, statusidfk, assigneduseridfk, resultcount, milestoneidfk, keywordfilter, archived, name
 		from	lh_filters
 		where	useridfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.id#">
 		order by name asc
@@ -198,11 +204,12 @@
 				keywordfilter =  <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.filter.keyword#" maxlength="255">,
 				milestoneidfk =  <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.filter.milestone#" maxlength="35">,
 				resultcount =  <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.filter.perpage#">,
+				archived =  <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.filter.archived#">
 				where id = <cfqueryparam cfsqltype="cf_sql_varchar" value="#checkExisting.id#" maxlength="35">
 				</cfquery>				
 			<cfelse>
 				<cfquery datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
-				insert into lh_filters(useridfk,projectidfk,issuetypeidfk,projectlocusidfk,severityidfk,statusidfk,assigneduseridfk,resultcount,milestoneidfk,keywordfilter,name,id)
+				insert into lh_filters(useridfk,projectidfk,issuetypeidfk,projectlocusidfk,severityidfk,statusidfk,assigneduseridfk,resultcount,milestoneidfk,keywordfilter,archived,name,id)
 				values(
 				<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.user.getID()#" maxlength="35">,
 				<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.filter.projectid#" maxlength="35">,
@@ -214,6 +221,7 @@
 				<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.filter.perpage#">,
 				<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.filter.milestone#" maxlength="35">,
 				<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.filter.keyword#" maxlength="255">,
+				<cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.filter.archived#">,
 				<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.filter.name#" maxlength="255">,
 				<cfqueryparam cfsqltype="cf_sql_varchar" value="#createUUID()#" maxlength="35">				
 				)

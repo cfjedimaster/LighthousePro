@@ -16,6 +16,8 @@
 
 	<cffunction name="deleteProject" access="public" returnType="void" output="false">
 		<cfargument name="id" type="uuid" required="true">
+		<cfargument name="attachmentdir" type="string" required="true">
+		<cfset var getIssueAttachments = "">
 
 		<cfquery datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
 		delete from lh_projects
@@ -40,9 +42,35 @@
 		where projectidfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.id#" maxlength="35">
 		</cfquery>
 
+		<cfquery name="getIssueAttachments" datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
+		    select lha.issueidfk, lha.filename
+		    from lh_attachments lha
+		        left outer join lh_issues lhi
+		            on lhi.Id = lha.issueidfk
+		    where lhi.projectidfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.id#" maxlength="35" />
+		</cfquery>
+		<cfloop query="getIssueAttachments">
+		    <cfif fileExists("#arguments.attachmentdir#/#getIssueAttachments.filename#")>
+		        <cffile action="delete" file="#arguments.attachmentdir#/#getIssueAttachments.filename#">
+		    </cfif>
+		</cfloop>
+
+		<!--- remove attachments --->
+		<cfquery datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
+		    delete
+		    from lh_attachments
+		    where issueidfk IN (<cfqueryparam cfsqltype="cf_sql_varchar" value="#ValueList(getIssueAttachments.issueidfk)#" list="true">)
+		</cfquery>
+
 		<!--- remove issues --->	
 		<cfquery datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
 		delete from lh_issues
+		where projectidfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.id#" maxlength="35">
+		</cfquery>
+
+		<!--- clean up announcemennts --->
+		<cfquery datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
+		delete from lh_announcements
 		where projectidfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.id#" maxlength="35">
 		</cfquery>
 

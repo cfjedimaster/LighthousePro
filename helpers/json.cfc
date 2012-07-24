@@ -395,11 +395,6 @@ Version: 1.9 February 20, 2008
 		
 		<!--- STRING --->
 		<cfelseif IsSimpleValue(_data)>
-			<cfif _data neq cleanhighascii(_data)>
-				<cflog file="application" text="yes, different">
-			<cfelse>
-				<cflog file="application" text="same">				
-			</cfif>
 			<cfset _data = CleanHighAscii(_data)>
 			<cfreturn '"' & ReplaceList(_data, escapeVals, escapeToVals) & '"' />
 		

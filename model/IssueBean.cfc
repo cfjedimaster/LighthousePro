@@ -18,6 +18,7 @@
 	<cfset variables.instance.duedate = "" />
 	<cfset variables.instance.issuetypeidfk = "" />
 	<cfset variables.instance.milestoneidfk = "" />
+	<cfset variables.instance.archived = "" />
 		
 	<cffunction name="setID" returnType="void" access="public" output="false">
 		<cfargument name="id" type="string" required="true">
@@ -172,6 +173,18 @@
 		<cfreturn variables.instance.milestoneidfk>
 	</cffunction>
 
+	<cffunction name="setArchived" returnType="void" access="public" output="false">
+		<cfargument name="archived" type="string" required="true">
+		<cfset variables.instance.archived = arguments.archived>
+	</cffunction>
+  
+	<cffunction name="getArchived" returnType="string" access="public" output="false">
+		<cfif not isBoolean(variables.instance.archived)>
+			<cfset variables.instance.archived = false>
+		</cfif>
+		<cfreturn variables.instance.archived>
+	</cffunction>
+	
 	<cffunction name="validate" returnType="array" access="public" output="false">
 		<cfset var errors = arrayNew(1)>
 

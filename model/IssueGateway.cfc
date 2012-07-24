@@ -31,7 +31,8 @@
 		<cfset var getit = "">
 		
 		<cfquery name="getit" datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
-			select 	id, projectidfk, created, updated, name, useridfk, creatoridfk, description, history, locusidfk, severityidfk, statusidfk, relatedurl, duedate, publicid, issuetypeidfk, milestoneidfk
+			select 	id, projectidfk, created, updated, name, useridfk, creatoridfk, description, history, 
+					locusidfk, severityidfk, statusidfk, relatedurl, duedate, publicid, issuetypeidfk, milestoneidfk, archived
 			from	lh_issues
 			where	id = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.id#" maxlength="35">
 		</cfquery>
@@ -54,6 +55,7 @@
 			<cfset iBean.setPublicID(getit.publicid)>
 			<cfset iBean.setIssueTypeIDFK(getit.issuetypeidfk)>
 			<cfset iBean.setMilestoneIDFK(getit.milestoneidfk)>
+			<cfset iBean.setArchived(getit.archived)>
 		</cfif>
 		<cfset ibean.setConfig(variables.config)>
 		<cfreturn iBean>
@@ -73,6 +75,7 @@
 		<cfargument name="owneridfk" type="string" required="false" default="">
 		<cfargument name="milestoneidfk" type="string" required="false" default="">
 		<cfargument name="keyword" type="string" required="false" default="">
+		<cfargument name="archived" type="boolean" required="false" default="false">
 		
 		<cfset var data = "">
 
@@ -138,6 +141,10 @@
 						<cfif arguments.milestoneidfk neq "">
 						AND	i.milestoneidfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.milestoneidfk#" maxlength="35">
 						</cfif>
+						<cfif arguments.archived>
+						<cfelse>
+						and (i.archived = <cfqueryparam cfsqltype="cf_sql_bit" value="0"> or i.archived is <cfqueryparam cfsqltype="cf_sql_bit" null=true>)
+						</cfif>
 
 						<cfif arguments.keyword neq "">
 						and (
@@ -184,7 +191,8 @@
 				relatedurl = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getRelatedURL()#" maxlength="255">,
 				duedate = <cfqueryparam cfsqltype="cf_sql_date" value="#arguments.bean.getDueDate()#" null="#not len(arguments.bean.getDueDate())#">,
 				issuetypeidfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getIssueTypeIDFK()#" maxlength="35">,
-				milestoneidfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMilestoneIDFK()#" maxlength="35">				
+				milestoneidfk = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMilestoneIDFK()#" maxlength="35">,
+				archived = <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.bean.getArchived()#">				
 				where id = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getID()#" maxlength="35">
 			</cfquery>				
 	
@@ -197,7 +205,7 @@
 			<cflock name="#variables.lock#_#arguments.bean.getProjectIdFk()#" type="exclusive" timeout="30">
 				
 			<cfquery datasource="#variables.dsn#" username="#variables.username#" password="#variables.password#">
-				insert into lh_issues(id,projectidfk,created,updated,name,useridfk,creatoridfk,description,history,locusidfk,severityidfk,statusidfk,relatedURL,duedate,issuetypeidfk,milestoneidfk)
+				insert into lh_issues(id,projectidfk,created,updated,name,useridfk,creatoridfk,description,history,locusidfk,severityidfk,statusidfk,relatedURL,duedate,issuetypeidfk,milestoneidfk,archived)
 				values(
 					<cfqueryparam cfsqltype="cf_sql_varchar" value="#newid#" maxlength="35">,
 					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getProjectIDFK()#" maxlength="35">,
@@ -214,7 +222,8 @@
 					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getRelatedURL()#" maxlength="255">,
 					<cfqueryparam cfsqltype="cf_sql_date" value="#arguments.bean.getDueDate()#">,
 					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getIssueTypeIDFK()#" maxlength="35">,
-					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMilestoneIDFK()#" maxlength="35">				
+					<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.bean.getMilestoneIDFK()#" maxlength="35">,
+					<cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.bean.getArchived()#">				
 					)
 			</cfquery>
 			

@@ -22,7 +22,7 @@
 		<cfset var id = "">
 		
 		<cfloop index="id" list="#arguments.list#">
-			<cfset variables.gateway.deleteProject(id)>
+			<cfset variables.gateway.deleteProject(id, variables.attachmentDirectory)>
 		</cfloop>
 		
 	</cffunction>
@@ -52,6 +52,11 @@
 	<cffunction name="saveProject" access="public" returnType="void" output="false">
 		<cfargument name="project" type="any" required="true">
 		<cfset variables.gateway.saveProject(arguments.project)>
+	</cffunction>
+
+	<cffunction name="setAttachmentDirectory" access="public" returnType="void" output="false">
+		<cfargument name="dir" type="any" required="true">
+		<cfset variables.attachmentDirectory = arguments.dir>
 	</cffunction>
 			
 </cfcomponent>

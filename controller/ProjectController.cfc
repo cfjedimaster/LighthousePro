@@ -2,8 +2,9 @@
 
 	<cffunction name="init" access="public" output="false" hint="Constructor">
 		<cfargument name="framework" />
-		
+
 		<cfset super.init(framework) />
+
 	
 		<cfreturn this />
 	</cffunction>
@@ -24,7 +25,20 @@
 	<cffunction name="deleteProject" access="public" output="false">
 		<cfargument name="event" type="any">
 		<cfset var markedtodie = arguments.event.getValue("mark")>
+		<cfset var rootDir = "">
+
 		
+		<!---
+		We need to pass this to the projectGateway. Currently this is set in both
+		this controller and issueController. May need to fix that. Also note we are repeating
+		this call N times. Ok, so I don't like that - so for now, a quick variable check.
+		--->
+		<cfif not structKeyExists(variables, "attachmentdirectory")>
+			<cfset rootDir = getDirectoryFromPath(getCurrentTemplatePath()) & "../">
+			<cfset variables.attachmentdirectory = rootDir & "attachments">
+			<cfset beans.projectService.setAttachmentDirectory(variables.attachmentdirectory)>
+		</cfif>
+
 		<cfset beans.projectService.deleteProjects(markedtodie)>
 	</cffunction>
 	

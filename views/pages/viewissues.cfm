@@ -1,7 +1,7 @@
 <cfset root = event.getValue("myself")>
 <cfset project = event.getValue("project")>
-<cfset currentfilters = event.getValue("currentfilters")>
 
+<cfset currentfilters = event.getValue("currentfilters")>
 <cfset possibleIssueTypes = event.getValue("issuetypes")>
 <cfset issuetype_filter = event.getValue("issuetype_filter",currentfilters.issuetype_filter)>
 
@@ -24,6 +24,7 @@
 <cfset milestone_filter = event.getValue("milestone_filter",currentfilters.milestone_filter)>
 
 <cfset keyword_filter = event.getValue("keyword_filter",currentfilters.keyword_filter)>
+<cfset archived_filter = event.getValue("archived_filter",currentfilters.archived_filter)>
 
 <cfset event.setValue("title", "Issues for Project: #project.getName()#")>
 
@@ -43,6 +44,7 @@ var keyword = "";
 var milestone = "";
 var istart = 1;
 var perpage = #perpage#;
+var archived = 0;
 
 //this handle checking to see if you can delete issues. makes sure you checked something
 //deleting removed from display, but keeping js for now
@@ -74,8 +76,9 @@ function getURL() {
 	if(owner.length > 0) url+="&owner=" + owner;
 	if(keyword.length > 0) url+="&keyword=" + escape(keyword);
 	<cfif milestones.recordCount>
-	if(milestone.length > 0) url+="&milestone=" + milestone
+	if(milestone.length > 0) url+="&milestone=" + milestone;
 	</cfif>
+	if(archived === 1) url+="&archived=1";
 	url += "&start="+istart;
 	url += "&perpage="+perpage;
 	return url; 
@@ -142,6 +145,12 @@ function filterData() {
 	keyword = $("##keyword_filter").val();
 	milestone = $("##milestone_filter").val();
 	perpage = parseInt($("##perpage_filter").val());
+	if($("##archived_filter").attr("checked")) {
+		archived=1;
+	} else {
+		archived=0;
+	}
+
 	istart=1;
 	updatePage(istart);
 }
@@ -199,7 +208,12 @@ $(document).ready(function() {
 					filter.keyword = $("##keyword_filter").val();
 					filter.milestone = $("##milestone_filter").val();
 					filter.perpage = parseInt($("##perpage_filter").val());
-					
+					if($("##archived_filter").attr("checked")) {
+						filter.archived=1;
+					} else {
+						filter.archived=0;
+					}
+
 					//store our filter
 					$.post("#root#action.filterSave", filter, function(res,status) {
 						//reload the filters nav so people know crap was saved
@@ -288,6 +302,7 @@ $(document).ready(function() {
 	</cfif>
 	
 	<input type="text" id="keyword_filter" name="keyword_filter" value="#keyword_filter#" onkeyup="filterData()"> <input type="button" value="Keyword Search" onclick="filterData()">
+	<input type="checkbox" id="archived_filter" name="archived_filter" value="1" onChange="filterData()" <cfif isBoolean(archived_filter) and archived_filter>checked</cfif>> Include Archived Issues
 	<span id="loading"><img src="images/ajax-loader.gif" align="absmiddle"></span>
 	<a href="" id="saveFilter">[Save as Filter]</a>
 

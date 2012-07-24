@@ -108,6 +108,7 @@
 			<cfset session.filters.perpage_filter="10">
 			<cfset session.filters.milestone_filter="">
 			<cfset session.filters.keyword_filter="">
+			<cfset session.filters.archived_filter=false>
 		</cfif>
 		<cfreturn session.filters>
 	</cffunction>
@@ -127,6 +128,7 @@
 		<cfset session.filters.milestone_filter = filter.milestoneidfk>
 		<cfset session.filters.keyword_filter = filter.keywordfilter>
 		<cfset session.filters.perpage_filter = filter.resultcount>
+		<cfset session.filters.archived_filter = filter.archived>
 		<cfset arguments.event.setValue("id", filter.projectidfk)>
 		
 		<cfset arguments.event.forward("page.viewissues","id")>
@@ -182,6 +184,7 @@
 		<cfset f.keyword_filter = arguments.event.getValue("keyword")>
 		<cfset f.milestone_filter = arguments.event.getValue("milestone")>	
 		<cfset f.perpage_filter = arguments.event.getValue("perpage")>
+		<cfset f.archived_filter = arguments.event.getValue("archived")>
 		<cfset session.filters = f>
 	</cffunction>
 	
@@ -213,7 +216,7 @@
 	<cffunction name="saveFilter" access="public" output="false">
 		<cfargument name="event" type="any">
 		<cfset var filter = structNew()>
-		<cfset event.copyToScope(filter, "projectid,issuetype,locus,severity,status,owner,keyword,milestone,perpage,name")>
+		<cfset event.copyToScope(filter, "projectid,issuetype,locus,severity,status,owner,keyword,milestone,perpage,name,archived")>
 		<cfset beans.userService.saveFilter(arguments.event.getValue("currentuser"),filter)>
 	</cffunction>
 	

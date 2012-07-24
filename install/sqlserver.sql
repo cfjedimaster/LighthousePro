@@ -98,7 +98,8 @@ CREATE TABLE [dbo].[lh_issues] (
 	[relatedurl] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
 	[publicid] [int] NULL ,
 	[duedate] [datetime] NULL, 
-	[milestoneidfk] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL  
+	[milestoneidfk] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[archived] [tinyint] COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
@@ -287,6 +288,7 @@ CREATE TABLE [dbo].[lh_filters]  (
 	[milestoneidfk] [nvarchar] (35) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[keywordfilter] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[name] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[archived] [tinyint] COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY]
 GO	
 
