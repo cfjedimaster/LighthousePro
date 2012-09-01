@@ -9,11 +9,11 @@ $(document).ready(function() {
 		var selproject = $("#project option:selected").val()
 		if(selproject == '') { $("#milestonelist").html(""); return; }
 		$("#milestonelist").html("<img src='images/ajax-loader.gif'>")
-		<cfoutput>$("##milestonelist").load('#root#page.milestonelist&project='+selproject)</cfoutput>
+		<cfoutput>$("##milestonelist").load('#root#page.milestonelist&project='+selproject+'&crap='+Math.random())</cfoutput>
 	})
 	
 	<cfif lastproject neq "">
-	<cfoutput>$("##milestonelist").load('#root#page.milestonelist&project=#lastproject#')</cfoutput>
+	<cfoutput>$("##milestonelist").load('#root#page.milestonelist&project=#lastproject#&crap='+Math.random())</cfoutput>
 	</cfif>
 })
 </script>	

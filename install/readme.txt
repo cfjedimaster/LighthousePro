@@ -21,6 +21,11 @@ This application was created by Raymond Camden (raymondcamden@gmail.com).
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
 
+Last Updated: 9/1/2012 (2.9.2)
+/config/ColdSpring.xml.cfm - version
+/views/milestones.cfm - added a random url to help fix an Ajax caching issue
+/install/mysql.sql - typo
+
 Last Updated: 11/29/2011 (2.9.1)
 /config/ColdSpring.xml.cfm - version
 Credit Sebastiaan van Dijk for noticing Project Deletion did not clean up attachments or announcements!
