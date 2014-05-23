@@ -2,22 +2,16 @@
 
 	<cffunction name="init" access="public" output="false" hint="Constructor">
 		<cfargument name="framework" />
-		<cfset var rootDir = getDirectoryFromPath(getCurrentTemplatePath()) & "../">
 		<cfset var settings = "">
 		
 		<cfset super.init(framework) />
 
-		<cfset variables.attachmentPath = rootDir & "attachments">
-		<cfif not directoryExists(variables.attachmentPath)>
-			<cftry>
-				<cfdirectory action="create" directory="#variables.attachmentpath#">
-				<cfcatch>
-					<cfthrow message="LighthousePro was unable to create the attachment directory: #variables.attachmentpath#">
-				</cfcatch>
-			</cftry>
-		</cfif>		
 		<cfset settings = getModelGlue().getBean("applicationSettings").getConfig()>
 		<cfset variables.dateformat = settings.dateformat>
+		<cfset variables.attachmentPath = settings.attachmentPath />
+		<cfif not directoryExists(variables.attachmentPath)>
+			<cfthrow message="LighthousePro was unable to use the attachment directory: #variables.attachmentpath#">
+		</cfif>		
 		
 		<cfreturn this />
 	</cffunction>

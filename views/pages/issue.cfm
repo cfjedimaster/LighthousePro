@@ -181,7 +181,7 @@ $(document).ready(function() {
 			<td>
 			<cfif structKeyExists(variables, "attachments") and isQuery(variables.attachments) and variables.attachments.recordCount gt 0>
 				<cfloop query="attachments">
-				<a target="_blank" href="attachments/#urlEncodedFormat(filename)#">#attachment#</a> <a href="javascript:confirmDialog('DELETE attachment - Are you sure?','#root#action.attachmentdelete&attachmentid=#id#&issue=#issue.getId()#');">[Delete]</a><br />
+					<a href="/?event=page.serveattachment&pid=#project.getId()#&id=#issue.getId()#&aid=#attachments.id#">#attachment#</a> <a href="javascript:confirmDialog('DELETE attachment - Are you sure?','#root#action.attachmentdelete&attachmentid=#id#&issue=#issue.getId()#');">[Delete]</a><br />
 				</cfloop>
 			<cfelse>
 			No attachments.

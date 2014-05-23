@@ -65,7 +65,9 @@
 			
 			 -->
 			<entry key="datepickerdateformat"><value>mm/dd/yy</value></entry>
-			<entry key="version"><value>2.9.2</value></entry>
+			<entry key="version"><value>2.9.3</value></entry>
+
+			<entry key="attachmentPath"><value>SETME</value></entry>
 		</map>
 	</property>
 </bean>

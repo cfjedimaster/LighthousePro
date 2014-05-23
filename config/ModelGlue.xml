@@ -584,7 +584,18 @@
 			<include name="body" template="pages/rss.cfm" />
 		</views>
 	</event-handler>
-			
+
+	<event-handler name="page.serveattachment" type="securedPage">
+        <broadcasts>
+            <message name="getIssue" />
+        </broadcasts>
+        <results>
+        </results>
+        <views>
+            <include name="body" template="pages/serveattachment.cfm" />
+        </views>
+    </event-handler>
+
 	<event-handler name="page.severity" type="securedPage">
 		<broadcasts>
 			<message name="getSeverity" />

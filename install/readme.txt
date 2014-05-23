@@ -1,7 +1,7 @@
 ReadMe
 
 LICENSE 
-Copyright 2010-2012 Raymond Camden
+Copyright 2010-2014 Raymond Camden
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -20,6 +20,9 @@ Copyright 2010-2012 Raymond Camden
 This application was created by Raymond Camden (raymondcamden@gmail.com). 
 If you find this application worthy, I have a Amazon wish list set up (www.amazon.com/o/registry/2TCL1D08EZEYE ). 
 Gifts are always welcome. ;)
+
+Last Updated: 5/23/2014 (2.9.3)
+Fix by Alan Holden to allow for a specified attachment path.
 
 Last Updated: 9/1/2012 (2.9.2)
 /config/ColdSpring.xml.cfm - version
